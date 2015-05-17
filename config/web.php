@@ -1,6 +1,6 @@
 <?php
 
-Yii::setAlias('themes', '../themes');
+Yii::setAlias('themes',  '../themes');
 $params = require(__DIR__ . '/params.php');
 
 $config = [
