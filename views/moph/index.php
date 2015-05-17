@@ -1,3 +1,8 @@
+<?php
+    $this->params['breadcrumbs'][] = ['label' => 'สร้างเสริมภูมิคุ้มกันโรค', 'url' => ['epi/index']];
+$this->params['breadcrumbs'][] = ['label' => 'เด็กอายุ 5 ปีได้รับวัคซีน DTP5', 'url' => ['epi/report1']];
+$this->params['breadcrumbs'][] = 'รายบุคคล';
+?>
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
