@@ -7,7 +7,8 @@ use yii\helpers\Url;
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">KPI</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><?=Yii::$app->name?></span>
+        <span class="logo-lg">R2DC</span>
+        <?php //Yii::$app->name?>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
