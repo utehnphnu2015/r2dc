@@ -28,12 +28,14 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                     'value' => function($model) {
                         $provname = $model['ampurname'];
                         $provcode = $model['provcode'];
+                        $amp = $model['ampcode'];
                         $title = $provname . ' ' . $provname;
                         $rep_year = $model['rep_year'];
                         //$url = "index.php?r=region/changwat";
                         return Html::a($provname, [
-                                    'region/changwat',
-                                    'chw'=> $provcode,
+                                    'region/hospital',
+                                    'amp'=>$amp,
+                                    'chw' => $provcode,
                                     'year' => $rep_year,
                                         ], ['title' => $title]);
                     }
@@ -55,6 +57,10 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                         [
                             'attribute' => 'work',
                             'header' => 'ผลงาน',
+                        ],
+                        [
+                            'attribute' => 'percent',
+                            'header' => 'ร้อยละ',
                         ],
                         [
                             'attribute' => 'm10',

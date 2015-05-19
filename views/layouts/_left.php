@@ -18,7 +18,7 @@ use yii\helpers\Url;
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <?php
-        //***************************
+        //*************************** count ตัวชี้วัด *************************
         
         $command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_moph');
         $moph = $command->queryScalar();
@@ -28,7 +28,10 @@ use yii\helpers\Url;
         $province = $command->queryScalar();
         $command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_qof');
         $qof = $command->queryScalar();
+        
+            //End*************************** count ตัวชี้วัด *************************
         ?>
+        
         <ul class="sidebar-menu">
 
 

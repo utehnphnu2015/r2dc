@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
                         //$url = "index.php?r=region/changwat";
                         return Html::a($provname, [
                                     'region/ampur',
-                                    'chw'=> $provcode,
+                                    'chw' => $provcode,
                                     'year' => $rep_year,
                                         ], ['title' => $title]);
                     }
@@ -55,6 +55,10 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
                         [
                             'attribute' => 'work',
                             'header' => 'ผลงาน',
+                        ],
+                        [
+                            'attribute' => 'percent',
+                            'header' => 'ร้อยละ',
                         ],
                         [
                             'attribute' => 'm10',
