@@ -27,7 +27,7 @@ class RegionController extends \yii\web\Controller {
         $year='2015';
         $connection = Yii::$app->db;
         $sql = "SELECT provcode,CONCAT(provcode,ampcode) AS prov,ch.changwatname,MAX(rep_year)+543 AS rep_year,SUM(target) AS target,SUM(work) AS work,
-(SUM(work)/SUM(target))*100 AS percent,
+ (SUM(work)/SUM(target))*100 AS percent,
 SUM(IF(rep_year=$year-1 AND month='10',work,0 )) AS m10,
 SUM(IF(rep_year=$year-1 AND month='11',work,0 )) AS m11,
 SUM(IF(rep_year=$year-1 AND month='12',work,0 )) AS m12,
@@ -131,7 +131,7 @@ SUM(IF(rep_year=$year AND month IN('07','08','09'),work,0 )) AS t4
 FROM kpi_region r
 INNER JOIN chospital2 ch ON ch.hoscode=r.hospcode
 WHERE rep_year BETWEEN $year-1 AND $year  AND r.provcode=$chw AND ampcode=$amp
-GROUP BY provcode";
+GROUP BY r.hospcode";
         $row = $connection->createCommand($sql)
                 ->queryAll();
         $dataProvider = new ArrayDataProvider([
