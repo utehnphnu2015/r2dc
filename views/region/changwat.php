@@ -178,12 +178,9 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
                         'series' => [
                             [
                                 'name' => 'ร้อยละ',
-                                'data' => $work,
+                                'data' => $percent,
                             ],
-                             [
-                                'name' => 'ร้อยละ',
-                                'data' => $work,
-                            ],
+                             
                         ]
                     ],
                 ]);
