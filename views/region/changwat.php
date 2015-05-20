@@ -1,11 +1,25 @@
 <?php
 
 use yii\helpers\Html;
+use miloschuman\highcharts\Highcharts;
 
 $this->params['breadcrumbs'][] = ['label' => 'ตัวชี้วัดเขต', 'url' => ['epi/index']];
 $this->params['breadcrumbs'][] = ['label' => '1.ร้อยละของโรงเรียนที่เข้าร่วมโครงการโรงเรียนส่งเสริมสุขภาพ', 'url' => ['epi/report1']];
 $this->params['breadcrumbs'][] = 'จังหวัด';
 ?>
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title">เลือกปีงบประมาณ</h3>
+        <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+    <div class="box-body">
+
+    </div>
+</div>
+
+
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
@@ -131,9 +145,50 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
 
 
 
-        <!--จบ content-->
-    </div>
-    <div class="box-footer">
+                <!--จบ content-->
+            </div>
+            <div class="box-footer">
+
+            </div>
+        </div><!-- /.box -->
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title"></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <?php
+                print_r($percent);
+                print_r($work);
+                echo Highcharts::widget([
+                    'options' => [
+                        'chart' => [
+                            'type' => 'column'
+                        ],
+                        'title' => ['text' => 'ผู้ป่วยความดันที่เป็นเบาหวาน'],
+                        'xAxis' => [
+                            'categories' => $changwatname
+                        ],
+                        'yAxis' => [
+                            'title' => ['text' => 'จำนวน(ร้อยละ)']
+                        ],
+                        'series' => [
+                            [
+                                'name' => 'ร้อยละ',
+                                'data' => $work,
+                            ],
+                             [
+                                'name' => 'ร้อยละ',
+                                'data' => $work,
+                            ],
+                        ]
+                    ],
+                ]);
+                ?>
+
 
     </div>
-</div><!-- /.box -->
+</div>

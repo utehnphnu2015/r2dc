@@ -48,6 +48,18 @@ FROM kpi_region r
 INNER JOIN cchangwat ch ON ch.changwatcode=provcode
 WHERE rep_year BETWEEN $year-1 AND $year 
 GROUP BY provcode";
+        
+         $data = $connection->createCommand($sql)
+                ->queryAll();
+
+        for ($i = 0; $i < sizeof($data); $i++) {
+            $percent[] = $data[$i]['percent'];
+            $changwatname[] = $data[$i]['changwatname'];
+            $work[] = $data[$i]['work'];
+            
+        }
+        
+        
         $row = $connection->createCommand($sql)
                 ->queryAll();
         $dataProvider = new ArrayDataProvider([
@@ -56,7 +68,11 @@ GROUP BY provcode";
                 'pageSize' => 2,
             ]*/
         ]);
-        return $this->render('changwat', ['dataProvider' => $dataProvider]);
+        return $this->render('changwat', ['dataProvider' => $dataProvider,
+                            'percent'=>$percent,
+                            'changwatname'=>$changwatname,
+                            'work'=>$work,
+                            ]);
     }
     
     public function actionAmpur() {
@@ -90,6 +106,8 @@ FROM kpi_region r
 INNER JOIN campur a ON a.ampurcodefull=CONCAT(r.provcode,r.ampcode)
 WHERE provcode=$chw
 GROUP BY prov;";
+        
+        
         $row = $connection->createCommand($sql)
                 ->queryAll();
         $dataProvider = new ArrayDataProvider([
@@ -98,7 +116,7 @@ GROUP BY prov;";
                 'pageSize' => 2,
             ]*/
         ]);
-        return $this->render('ampur', ['dataProvider' => $dataProvider]);
+        return $this->render('ampur', ['dataProvider' => $dataProvider ]);
     }
     
     
