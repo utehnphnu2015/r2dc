@@ -738,7 +738,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/b394056b5663652ea29eef953d458d3bc3e4b2f5",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/8026fce4b6df9783304cac8540887632eac8885a",
                 "reference": "b394056b5663652ea29eef953d458d3bc3e4b2f5",
                 "shasum": ""
             },

@@ -24,7 +24,15 @@ class RegionController extends \yii\web\Controller {
     
     
     public function actionChangwat() {
-        $year='2015';
+        $year=date('Y');
+        $percent[]=0;
+        $changwatname[]='';
+        $work[]=0;
+        $a=0;
+         if (isset($_POST['year'])) {
+             $year=$_POST['year'];
+         }
+        
         $connection = Yii::$app->db;
         $sql = "SELECT provcode,CONCAT(provcode,ampcode) AS prov,ch.changwatname,MAX(rep_year)+543 AS rep_year,SUM(target) AS target,SUM(work) AS work,
  (SUM(work)/SUM(target))*100 AS percent,
@@ -49,21 +57,23 @@ INNER JOIN cchangwat ch ON ch.changwatcode=provcode
 WHERE rep_year BETWEEN $year-1 AND $year 
 GROUP BY provcode";
         
-         $data = $connection->createCommand($sql)
-                ->queryAll();
+         
 
-        for ($i = 0; $i < sizeof($data); $i++) {
-            $percent[] = $data[$i]['percent'];
+       
+        
+        $data = $connection->createCommand($sql)
+                ->queryAll();
+        
+         for ($i = 0; $i < sizeof($data); $i++) {
+            $percent[] = $data[$i]['percent']*1;
             $changwatname[] = $data[$i]['changwatname'];
             $work[] = $data[$i]['work'];
+            $a=1;
             
         }
         
-        
-        $row = $connection->createCommand($sql)
-                ->queryAll();
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $row,
+            'allModels' => $data,
             /*'pagination' => [
                 'pageSize' => 2,
             ]*/
@@ -72,6 +82,7 @@ GROUP BY provcode";
                             'percent'=>$percent,
                             'changwatname'=>$changwatname,
                             'work'=>$work,
+                            'a'=>$a,
                             ]);
     }
     

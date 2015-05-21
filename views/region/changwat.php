@@ -15,12 +15,35 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
         </div>
     </div>
     <div class="box-body">
+        <div class="col-md-6">
+        <?php
+                if (isset($_POST['year'])) {
+                    $y = $_POST['year'];
+                } else {
+                    $y = date('Y');
+                }
+                ?>
+                <?php
+                $cyear = date('Y');
+                ?>
+                <?= Html::beginForm(); ?>
+                <?=
+                Html::dropDownList('year', $y, [$cyear - 3 => ($cyear - 3) + 543,
+                    $cyear - 2 => ($cyear - 2) + 543,
+                    $cyear - 1 => ($cyear - 1) + 543,
+                    $cyear => ($cyear) + 543], ['class' => 'form-control', 'prompt' => 'โปรดเลือกปี', 'required' => true]);
+                ?>
+        </div>
+        <div class="col-md-6">
+                <?= Html::submitButton('ประมวลผล', ['class' => 'btn btn-danger']); ?>
+        </div>
+                <?= Html::endForm(); ?>
 
     </div>
 </div>
 
-
 <!-- Default box -->
+<?php if($a==1){ ?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title">1.ร้อยละของโรงเรียนที่เข้าร่วมโครงการโรงเรียนส่งเสริมสุขภาพ</h3>
@@ -31,6 +54,7 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
     <div class="box-body">
         <!--เริ่ม content-->
         <?php
+        //print_r($changwatname);
         echo yii\grid\GridView::widget([
             //echo \kartik\grid\GridView::widget([
             'dataProvider' => $dataProvider,
@@ -160,15 +184,17 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
                 </div>
             </div>
             <div class="box-body">
+
                 <?php
-                print_r($percent);
-                print_r($work);
+                //$tt = array('1', '2', '3', '4');
+                //print_r($tt);
+                //print_r($work);
                 echo Highcharts::widget([
                     'options' => [
                         'chart' => [
                             'type' => 'column'
                         ],
-                        'title' => ['text' => 'ผู้ป่วยความดันที่เป็นเบาหวาน'],
+                        'title' => ['text' => 'ร้อยละของโรงเรียนที่เข้าร่วมโครงการโรงเรียนส่งเสริมสุขภาพ'],
                         'xAxis' => [
                             'categories' => $changwatname
                         ],
@@ -176,16 +202,21 @@ $this->params['breadcrumbs'][] = 'จังหวัด';
                             'title' => ['text' => 'จำนวน(ร้อยละ)']
                         ],
                         'series' => [
+
                             [
                                 'name' => 'ร้อยละ',
-                                'data' => $percent,
+                                'data' => $percent
                             ],
-                             
                         ]
                     ],
                 ]);
                 ?>
 
-
     </div>
 </div>
+<?php }else{ ?>
+        
+        <div class="alert alert-warning" role="alert">ไม่มีข้อมูล</div>
+        
+<?php } ?>
+
