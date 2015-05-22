@@ -54,7 +54,7 @@ SUM(IF(rep_year=$year AND month='09',work,0 )) AS m09,
 SUM(IF(rep_year=$year AND month IN('07','08','09'),work,0 )) AS t4
 FROM kpi_region r
 INNER JOIN cchangwat ch ON ch.changwatcode=provcode
-WHERE rep_year BETWEEN $year-1 AND $year 
+WHERE rep_year BETWEEN $year-1 AND $year  and kpi_id=1
 GROUP BY provcode";
         
          
@@ -115,7 +115,7 @@ SUM(IF(rep_year=$year AND month='09',work,0 )) AS m09,
 SUM(IF(rep_year=$year AND month IN('07','08','09'),work,0 )) AS t4
 FROM kpi_region r
 INNER JOIN campur a ON a.ampurcodefull=CONCAT(r.provcode,r.ampcode)
-WHERE provcode=$chw
+WHERE provcode=$chw and kpi_id=1
 GROUP BY prov;";
         
         
@@ -159,7 +159,7 @@ SUM(IF(rep_year=$year AND month='09',work,0 )) AS m09,
 SUM(IF(rep_year=$year AND month IN('07','08','09'),work,0 )) AS t4
 FROM kpi_region r
 INNER JOIN chospital2 ch ON ch.hoscode=r.hospcode
-WHERE rep_year BETWEEN $year-1 AND $year  AND r.provcode=$chw AND ampcode=$amp
+WHERE rep_year BETWEEN $year-1 AND $year  AND r.provcode=$chw AND ampcode=$amp  and kpi_id=1
 GROUP BY r.hospcode";
         $row = $connection->createCommand($sql)
                 ->queryAll();

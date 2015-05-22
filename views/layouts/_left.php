@@ -35,17 +35,19 @@ use yii\helpers\Url;
         <ul class="sidebar-menu">
 
 
-            <li class="header">รายการ</li>
-            <li><a href="<?= Url::to(['index']) ?>"><i class="fa fa-circle text-red"></i> <span>ตัวชี้วัดกระทรวง</span><small class="label pull-right bg-red"><?=$moph?></small></a></li>
+            <li class="header"><h5><div class="label label-default"> รายการ</div></h5></li>
+            <li><a href="<?php echo Url::to(['dashboard/index','type'=>1]); ?>"><i class="fa fa-circle text-red"></i> <span>ตัวชี้วัดกระทรวง</span><small class="label pull-right bg-red"><?=$moph?></small></a></li>
 
-            <li><a href="<?= Url::to(['upload1']) ?>"><i class="fa fa-circle text-orange"></i> <span>ตัวชี้วัดเขต</span> <small class="label pull-right bg-orange"><?=$region?></small></a> </li>
-            <li><a href="<?= Url::to(['upload2']) ?>"><i class="fa fa-circle text-blue"></i> <span>ตัวชี้วัดจังหวัด</span><small class="label pull-right bg-blue"><?=$province?></small></a></li>
-            <li><a href="<?= Url::to(['find']) ?>"><i class="fa fa-circle text-aqua"></i> <span>ตัวชี้วัด QOF</span><small class="label pull-right bg-aqua"><?=$qof?></small></a></li>
-
-                    <li class="header">ค้นหา</li>
-                    <li><a href="<?= Url::to(['find']) ?>"><i class="fa fa-circle-o text-primary"></i> <span>---</span></a></li>
-
-                    <li class="header">จังหวัด</li>
+            <li><a href="<?php echo Url::to(['dashboard/index','type'=>2]); ?>"><i class="fa fa-circle text-orange"></i> <span>ตัวชี้วัดเขต</span> <small class="label pull-right bg-orange"><?=$region?></small></a> </li>
+            <li><a href="<?php echo Url::to(['dashboard/index','type'=>3]); ?>"><i class="fa fa-circle text-blue"></i> <span>ตัวชี้วัดจังหวัด</span><small class="label pull-right bg-blue"><?=$province?></small></a></li>
+            <li><a href="<?php echo Url::to(['dashboard/index','type'=>4]); ?>"><i class="fa fa-circle text-aqua"></i> <span>ตัวชี้วัด QOF</span><small class="label pull-right bg-aqua"><?=$qof?></small></a></li>
+            
+             <li class="header"><h5><div class="label label-default">ข้อมูลพื้นฐาน</div></h5></li>
+                    <li><a href="#"><i class="fa fa-check-circle-o text-red"></i> <span>ข้อมูลทั่วไป</span></a></li>
+                    <li><a href="#"><i class="fa fa-check-circle-o text-yellow"></i> <span>การเงินการคลัง</span></a></li>
+                    <li><a href="#"><i class="fa fa-check-circle-o text-aqua"></i> <span>กำลังคน</span></a></li>
+                  
+            <li class="header"><h5><div class="label label-default"> จังหวัด</div></h5></li>
                     <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>พิษณุโลก</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>อุตรดิตถ์</span></a></li>
                     <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>เพชรบูรณ์</span></a></li>
