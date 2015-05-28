@@ -117,7 +117,7 @@ IF ($type == 1) {
                         }
                             ],
                             [
-                                'attribute' => 'persent',
+                                'attribute' => 'percent',
                                 'header' => 'ร้อยละ'
                             ],
                         ],
