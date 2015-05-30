@@ -48,11 +48,11 @@ use yii\helpers\Url;
                     <li><a href="#"><i class="fa fa-check-circle-o text-aqua"></i> <span>กำลังคน</span></a></li>
                   
             <li class="header"><h5><div class="label label-default"> จังหวัด</div></h5></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>พิษณุโลก</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>อุตรดิตถ์</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>เพชรบูรณ์</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-blue"></i> <span>สุโขทัย</span></a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-danger"></i> <span>ตาก</span></a></li>
+                    <li><a href="http://hdc.plkhealth.go.th" target="_blank"><i class="fa fa-bar-chart text-red"></i> <span>พิษณุโลก</span></a></li>
+                    <li><a href="#" target="_blank"><i class="fa fa-bar-chart text-yellow"></i> <span>อุตรดิตถ์</span></a></li>
+                    <li><a href="#"><i class="fa fa-bar-chart text-aqua"></i> <span>เพชรบูรณ์</span></a></li>
+                    <li><a href="http://hdc.skto.moph.go.th" target="_blank"><i class="fa fa-bar-chart text-blue"></i> <span>สุโขทัย</span></a></li>
+                    <li><a href="#"><i class="fa fa-bar-chart text-danger"></i> <span>ตาก</span></a></li>
 
 
         </ul>

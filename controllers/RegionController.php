@@ -29,13 +29,15 @@ class RegionController extends \yii\web\Controller {
         $changwatname[]='';
         $work[]=0;
         $a=0;
+        $id1=$_GET['id'];
          if (isset($_POST['year'])) {
              $year=$_POST['year'];
+              //$id1=$_GET['id'];
          }
-        
+        //echo  $id1.'dd';
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,provcode,CONCAT(provcode,ampcode) AS prov,ch.changwatname,hospcode,provcode,ampcode,target,
-work,AVG(ratio) AS ratio,
+total,AVG(ratio) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
@@ -45,7 +47,7 @@ SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
 (mon10+mon11+mon12) AS t4
 FROM  kpi_region r
 INNER JOIN cchangwat ch ON ch.changwatcode=provcode
-WHERE rep_year= '$year'  and kpi_id='00100'
+WHERE rep_year= '$year'  and kpi_id='$id1'
 GROUP BY  provcode ";
         
          
@@ -58,7 +60,7 @@ GROUP BY  provcode ";
          for ($i = 0; $i < sizeof($data); $i++) {
             $percent[] = $data[$i]['ratio']*1;
             $changwatname[] = $data[$i]['changwatname'];
-            $work[] = $data[$i]['work'];
+            $work[] = $data[$i]['total'];
             $a=1;
             
         }
@@ -81,12 +83,13 @@ GROUP BY  provcode ";
         if(isset($_GET['year'])){
             $year=$_GET['year']-543;
             $chw=$_GET['chw'];
+            $id=$_GET['id'];
             
         }
         
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,provcode,CONCAT(provcode,ampcode) AS prov,a.ampurname,hospcode,provcode,ampcode,target,
-work,AVG(ratio) AS ratio,
+total,AVG(ratio) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
@@ -96,7 +99,7 @@ SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
 (mon10+mon11+mon12) AS t4
 FROM  kpi_region r
 INNER JOIN campur a ON a.ampurcodefull=CONCAT(r.provcode,r.ampcode)
-WHERE rep_year = '$year'  and kpi_id='00100' AND provcode='$chw'
+WHERE rep_year = '$year'  and kpi_id='$id' AND provcode='$chw'
 GROUP BY  provcode,ampcode";
         
         
@@ -113,15 +116,17 @@ GROUP BY  provcode,ampcode";
     
     
     public function actionHospital() {
+        $id=$_GET['id'];
         if(isset($_GET['year'])){
             $year=$_GET['year']-543;
             $chw=$_GET['chw'];
             $amp=$_GET['amp'];
+             
         }
         
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,r.provcode,CONCAT(r.provcode,ampcode) AS prov,ch.hosname,hospcode,ampcode,target,
-work,AVG(ratio) AS ratio,
+total,AVG(ratio) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
@@ -131,7 +136,7 @@ SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
 (mon10+mon11+mon12) AS t4
 FROM  kpi_region r
 INNER JOIN chospital2 ch ON ch.hoscode=r.hospcode
-WHERE rep_year = '$year'  and kpi_id='00100' AND r.provcode='$chw' AND ampcode='$amp'
+WHERE rep_year = '$year'  and kpi_id='$id' AND r.provcode='$chw' AND ampcode='$amp'
 GROUP BY  r.provcode,ampcode,hospcode  ";
         $row = $connection->createCommand($sql)
                 ->queryAll();

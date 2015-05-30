@@ -2,9 +2,16 @@
 
 use yii\helpers\Html;
 
-$this->params['breadcrumbs'][] = ['label' => 'ตัวชี้วัดเขต', 'url' => ['epi/index']];
-$this->params['breadcrumbs'][] = ['label' => '1.ร้อยละของโรงเรียนที่เข้าร่วมโครงการโรงเรียนส่งเสริมสุขภาพ', 'url' => ['epi/report1']];
-$this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => ['region/changwat']];
+$id=$_GET['id'];
+$amp=$_GET['amp'];
+$chw=$_GET['chw'];
+$year=$_GET['year'];
+$this->params['breadcrumbs'][] = ['label' => 'ตัวชี้วัดเขต', 'url' => ['dashboard/index', 'type' =>2]];
+$this->params['breadcrumbs'][] =  ['label' => 'จังหวัด', 'url' => ['region/changwat','id'=>$id]];
+$this->params['breadcrumbs'][] =  ['label' => 'อำเภอ', 'url' => ['region/ampur','id'=>$id,'chw'=>$chw,'year'=>$year]];
+$this->params['breadcrumbs'][] =  ['label' => 'สถานบริการ', 'url' => ['region/hopital']];
+//$this->params['breadcrumbs'][] = ['label' => '1.ร้อยละของโรงเรียนที่เข้าร่วมโครงการโรงเรียนส่งเสริมสุขภาพ', 'url' => ['epi/report1']];
+
 ?>
 <!-- Default box -->
 <div class="box">
@@ -31,11 +38,11 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                     'header' => 'เป้าหมาย'
                 ],
                 [
-                    'attribute' => 'work',
+                    'attribute' => 'total',
                     'header' => 'ผลงาน',
                 ],
                 [
-                    'attribute' => 'percent',
+                    'attribute' => 'ratio',
                     'header' => 'ร้อยละ',
                 ],
                 [
@@ -51,10 +58,6 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                     'header' => 'ธ.ค'
                 ],
                 [
-                    'attribute' => 't1',
-                    'header' => 'รวม',
-                ],
-                [
                     'attribute' => 'mon4',
                     'header' => 'ม.ค'
                 ],
@@ -65,10 +68,6 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                 [
                     'attribute' => 'mon6',
                     'header' => 'มี.ค'
-                ],
-                [
-                    'attribute' => 't2',
-                    'header' => 'รวม'
                 ],
                 [
                     'attribute' => 'mon7',
@@ -83,10 +82,6 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                     'header' => 'มิ.ย'
                 ],
                 [
-                    'attribute' => 't3',
-                    'header' => 'รวม'
-                ],
-                [
                     'attribute' => 'mon10',
                     'header' => 'ก.ค'
                 ],
@@ -98,10 +93,7 @@ $this->params['breadcrumbs'][] = ['label' => 'จังหวัด', 'url' => [
                     'attribute' => 'mon12',
                     'header' => 'ก.ย'
                 ],
-                [
-                    'attribute' => 't4',
-                    'header' => 'รวม'
-                ],
+                
             ],
         ]);
         ?>
