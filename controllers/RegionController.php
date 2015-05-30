@@ -37,7 +37,7 @@ class RegionController extends \yii\web\Controller {
         //echo  $id1.'dd';
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,provcode,CONCAT(provcode,ampcode) AS prov,ch.changwatname,hospcode,provcode,ampcode,target,
-total,AVG(ratio) AS ratio,
+total,round(sum(total)*100/sum(target),2) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
@@ -89,7 +89,7 @@ GROUP BY  provcode ";
         
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,provcode,CONCAT(provcode,ampcode) AS prov,a.ampurname,hospcode,provcode,ampcode,target,
-total,AVG(ratio) AS ratio,
+total,round(sum(total)*100/sum(target),2) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
@@ -126,7 +126,7 @@ GROUP BY  provcode,ampcode";
         
         $connection = Yii::$app->db;
         $sql = "SELECT kpi_id,rep_year+543 AS rep_year,r.provcode,CONCAT(r.provcode,ampcode) AS prov,ch.hosname,hospcode,ampcode,target,
-total,AVG(ratio) AS ratio,
+total,round(sum(total)*100/sum(target),2) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
