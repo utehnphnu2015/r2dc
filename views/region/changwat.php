@@ -31,7 +31,8 @@ $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี�
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
-
+        <a class="btn btn-success" href="<?=  Url::to(['index','rep_year'=>$rep_year])?>">ย้อนกลับ</a> 
+        
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,

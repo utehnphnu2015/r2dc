@@ -32,6 +32,8 @@ $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','u
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
+        
+         <a class="btn btn-success" href="<?=  Url::to(['changwat','kpi_id'=>$kpi_id,'rep_year'=>$rep_year])?>">ย้อนกลับ</a> 
 
         <?php
         echo GridView::widget([
