@@ -48,12 +48,13 @@ $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','u
                     'attribute' => 'ampname',
                     'label' => 'อำเภอ',
                     'format'=>'raw',
-                    'value'=>  function($data) use ($kpi_id,$rep_year){
+                    'value'=>  function($data) use ($kpi_id,$rep_year,$provcode){
                         $params = [
                             'region/hospital', // action
                             'kpi_id' => $kpi_id,
                             'rep_year' => $rep_year,
-                            
+                            'provcode'=>$provcode,
+                            'ampcode'=>$data['ampcode']
                         ];
 
                         return Html::a($data['ampname'], $params);

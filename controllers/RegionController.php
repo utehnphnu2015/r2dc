@@ -107,6 +107,24 @@ from campur a  WHERE a.provcode = $provcode
 
     public function actionHospital($kpi_id, $rep_year,$provcode,$ampcode) {
         
+        $sql = " SELECT h.hosname,k.* FROM kpi_region k  LEFT JOIN chospital2 h on h.hospcode = k.hospcode
+
+WHERE k.kpi_id = $kpi_id  and k.rep_year = $rep_year  AND k.provcode = $provcode and k.ampcode = $ampcode ";
+        
+        $raw = $this->queryAll($sql);
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $raw
+        ]);
+
+        return $this->render('hospital', [
+                    'dataProvider' => $dataProvider,
+                    'rep_year' => $rep_year,
+                    'kpi_id'=>$kpi_id,
+                    'provcode'=>$provcode,
+                    
+        ]);
+        
+        
     }
 
 //จบรายหน่วยงาน
