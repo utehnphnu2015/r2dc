@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             <a  class="btn btn-default" href="<?= Url::to(['index', 'rep_year' => '2015']) ?>">2558</a>
             <a  class="btn btn-default" href="<?= Url::to(['index', 'rep_year' => '2016']) ?>">2559</a>
         </div>
-        <h4>ปีงบประมาณ <?= $rep_year + 543 ?></h4>
+        <h4>ปีงบประมาณ <span style="background-color:  red; color: white;padding: 5px"><?= $rep_year + 543 ?></span></h4>
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,

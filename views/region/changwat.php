@@ -13,12 +13,14 @@ $this->params['breadcrumbs'][]=['label'=>'รายจังหวัด']
 <!-- Default box -->
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="glyphicon glyphicon-th-list"></i> 
-        <?php
+        <h3 class="box-title" ><i class="glyphicon glyphicon-th-list"></i> 
+            <span style="color: #0000cc">
+            <?php
         $topic = TopicRegion::find()->where(['id'=>$kpi_id])->asArray()->one();
         echo $kpi_id; 
         echo "-".$topic['topic'];
         ?>
+            </span>
         </h3>
         <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
