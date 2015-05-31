@@ -24,7 +24,7 @@ $qof = $command->queryScalar();
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="<?php echo Url::to(['dashboard/index', 'type' => 1]); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo Url::to(['moph/index']); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
 
             </div>
         </div>
@@ -39,7 +39,7 @@ $qof = $command->queryScalar();
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="<?php echo Url::to(['dashboard/index', 'type' => 2]); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo Url::to(['region/index']); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
 
@@ -53,7 +53,7 @@ $qof = $command->queryScalar();
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?php echo Url::to(['dashboard/index', 'type' => 3]); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo Url::to(['province/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -66,64 +66,11 @@ $qof = $command->queryScalar();
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="<?php echo Url::to(['dashboard/index', 'type' => 4]); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo Url::to(['qof/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     </div>
 </div>
 
-<?php
-IF ($type == 1) {
-    $typename = 'ตัวชี้วัดกระทรวง';
-    $panel = 'info';
-} else if ($type == 2) {
-    $typename = 'ตัวชี้วัดเขต';
-    $panel = 'success';
-} else if ($type == 3) {
-    $typename = 'ตัวชี้วัดจังหวัด';
-    $panel = 'warning';
-} else if ($type == 4) {
-    $typename = 'ตัวชี้วัด QOF';
-    $panel = 'danger';
-}
-?>
 
-<div class="col-md-12">
-    <div class="panel panel-<?= $panel ?>">
-        <div class="panel-heading">
-            <h3 class="panel-title"> <i class='glyphicon glyphicon-check'></i> 
-<?= $typename; ?>
-            </h3>
-        </div>
-        <div class="panel-body">
-            <?php
-            echo yii\grid\GridView::widget([
-                //echo \kartik\grid\GridView::widget([
-                'dataProvider' => $dataProvider,
-                'columns' => [
-                    ['class' => 'yii\grid\SerialColumn'],
-                    [
-                        'label' => 'รายการ',
-                        'format' => 'raw',
-                        'value' => function($model) {
-                            $topic = $model['topic'];
-                            $id = $model['id'];
-                            $title = ''; //$provname . ' ' . $provname;
-                            //$url = "index.php?r=region/changwat";
-                            return Html::a($topic, [
-                                        'region/changwat',
-                                        'id' => $id,
-                                            ], ['title' => $title]);
-                        }
-                            ],
-                            [
-                                'attribute' => 'percent',
-                                'header' => 'ร้อยละ'
-                            ],
-                        ],
-                    ]);
-                    ?>
 
-        </div>
-    </div>
-</div>

@@ -10,18 +10,14 @@ class RegionController extends \yii\web\Controller {
     public function actionIndex() {
         $year='2015';
         $connection = Yii::$app->db;
-        $sql = "select '2558' as repyear,k.id,k.topic
-,(SELECT sum(t.target) from kpi_region t where t.kpi_id = k.id and t.rep_year = '2015') as target 
-, (SELECT sum(t.total) from kpi_region t where t.kpi_id = k.id and t.rep_year = '2015') as total  
-, ROUND(12.233,2) as raio 
-FROM topic_region k";
-        $row = $connection->createCommand($sql)
+        $sql = "";
+        $row = $connection->createCommand('SELECT id,topic FROM topic_region')
                 ->queryAll();
         $dataProvider = new ArrayDataProvider([
             'allModels' => $row,
-            //'pagination' => [
-                //'pageSize' => 2,
-           // ]
+            'pagination' => [
+                'pageSize' => 2,
+            ]
         ]);
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }

@@ -5,23 +5,19 @@ namespace app\controllers;
 use yii;
 use yii\data\ArrayDataProvider;
 
-class RegionController extends \yii\web\Controller {
+class ProvinceController extends \yii\web\Controller {
 
     public function actionIndex() {
         $year='2015';
         $connection = Yii::$app->db;
-        $sql = "select '2558' as repyear,k.id,k.topic
-,(SELECT sum(t.target) from kpi_region t where t.kpi_id = k.id and t.rep_year = '2015') as target 
-, (SELECT sum(t.total) from kpi_region t where t.kpi_id = k.id and t.rep_year = '2015') as total  
-, ROUND(12.233,2) as raio 
-FROM topic_region k";
-        $row = $connection->createCommand($sql)
+        $sql = "";
+        $row = $connection->createCommand('SELECT id,topic FROM topic_province')
                 ->queryAll();
         $dataProvider = new ArrayDataProvider([
             'allModels' => $row,
-            //'pagination' => [
-                //'pageSize' => 2,
-           // ]
+            'pagination' => [
+                'pageSize' => 2,
+            ]
         ]);
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
@@ -49,7 +45,7 @@ SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
 (mon4+mon5+mon6) AS t2,
 (mon7+mon8+mon9) AS t3,
 (mon10+mon11+mon12) AS t4
-FROM  kpi_region r
+FROM  kpi_province r
 INNER JOIN cchangwat ch ON ch.changwatcode=provcode
 WHERE rep_year= '$year'  and kpi_id='$id1'
 GROUP BY  provcode ";
@@ -97,7 +93,7 @@ total,round(sum(total)*100/sum(target),2) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12
-FROM  kpi_region r
+FROM  kpi_province r
 INNER JOIN campur a ON a.ampurcodefull=CONCAT(r.provcode,r.ampcode)
 WHERE rep_year = '$year'  and kpi_id='$id' AND provcode='$chw'
 GROUP BY  provcode,ampcode";
@@ -130,7 +126,7 @@ total,round(sum(total)*100/sum(target),2) AS ratio,
 SUM(mon1) AS mon1,SUM(mon2) AS mon2,SUM(mon3) AS mon3,SUM(mon4) AS mon4,
 SUM(mon5) AS mon5,SUM(mon6) AS mon6,SUM(mon7) AS mon7,SUM(mon8) AS mon8,
 SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12
-FROM  kpi_region r
+FROM  kpi_province r
 INNER JOIN chospital2 ch ON ch.hoscode=r.hospcode
 WHERE rep_year = '$year'  and kpi_id='$id' AND r.provcode='$chw' AND ampcode='$amp'
 GROUP BY  r.provcode,ampcode,hospcode  ";
