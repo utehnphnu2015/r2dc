@@ -8,8 +8,8 @@ use app\models\TopicRegion;
 
 class RegionController extends \yii\web\Controller {
 
-    public function db() {
-        return Yii::$app->db;
+    public function queryAll($sql) {
+        return Yii::$app->db->createCommand($sql)->queryAll();
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
@@ -23,7 +23,7 @@ class RegionController extends \yii\web\Controller {
 
 FROM topic_region t 
 ) t ";
-        $raw = $this->db()->createCommand($sql)->queryAll();
+        $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
         ]);
@@ -57,7 +57,7 @@ from kpi_region k  INNER JOIN cchangwat p on  p.provcode = k.provcode
 where k.kpi_id = $kpi_id and k.rep_year = $rep_year 
 GROUP BY k.provcode ";
 
-        $raw = $this->db()->createCommand($sql)->queryAll();
+        $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
         ]);
