@@ -5,6 +5,8 @@ namespace app\controllers;
 use yii;
 use yii\data\ArrayDataProvider;
 
+use app\models\TopicRegion;
+
 class RegionController extends \yii\web\Controller {
 
     public function actionIndex() {
@@ -27,13 +29,13 @@ FROM topic_region k";
     }
     
     
-    public function actionChangwat() {
+    public function actionChangwat($kpi_id) {
         $year=date('Y');
         $percent[]=0;
         $changwatname[]='';
         $work[]=0;
         $a=0;
-        $id1=$_GET['id'];
+        //$id1=$_GET['id'];
          if (isset($_POST['year'])) {
              $year=$_POST['year'];
               //$id1=$_GET['id'];
@@ -51,8 +53,10 @@ SUM(mon9) AS mon9,SUM(mon10) AS mon10,SUM(mon11) AS mon11,SUM(mon12) AS mon12,
 (mon10+mon11+mon12) AS t4
 FROM  kpi_region r
 INNER JOIN cchangwat ch ON ch.changwatcode=provcode
-WHERE rep_year= '$year'  and kpi_id='$id1'
+WHERE rep_year= '$year'  and kpi_id='$kpi_id'
 GROUP BY  provcode ";
+        
+        
         
          
 
@@ -61,6 +65,7 @@ GROUP BY  provcode ";
         $data = $connection->createCommand($sql)
                 ->queryAll();
         
+        // สำหรับทำ graph
          for ($i = 0; $i < sizeof($data); $i++) {
             $percent[] = $data[$i]['ratio']*1;
             $changwatname[] = $data[$i]['changwatname'];
@@ -75,11 +80,18 @@ GROUP BY  provcode ";
                 'pageSize' => 2,
             ]*/
         ]);
+        
+        // หาชื่อ topic
+        
+        $topic_kpi = TopicRegion::find()->where(['id'=>$kpi_id])->asArray()->one();
+        
+        $topic_kpi = $topic_kpi['id']."-".$topic_kpi['topic'];
         return $this->render('changwat', ['dataProvider' => $dataProvider,
                             'percent'=>$percent,
                             'changwatname'=>$changwatname,
                             'work'=>$work,
                             'a'=>$a,
+                            'topic_kpi'=>$topic_kpi
                             ]);
     }
     

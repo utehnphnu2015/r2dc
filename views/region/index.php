@@ -1,6 +1,10 @@
 <?php
+
 use yii\grid\GridView;
-    $this->params['breadcrumbs'][] = ['label' => 'สร้างเสริมภูมิคุ้มกันโรค', 'url' => ['epi/index']];
+use yii\helpers\Url;
+use yii\helpers\Html;
+
+$this->params['breadcrumbs'][] = ['label' => 'สร้างเสริมภูมิคุ้มกันโรค', 'url' => ['epi/index']];
 $this->params['breadcrumbs'][] = ['label' => 'เด็กอายุ 5 ปีได้รับวัคซีน DTP5', 'url' => ['epi/report1']];
 $this->params['breadcrumbs'][] = 'รายบุคคล';
 ?>
@@ -15,11 +19,36 @@ $this->params['breadcrumbs'][] = 'รายบุคคล';
     <div class="box-body">
         <!--เริ่ม content-->
         <?php
-         echo GridView::widget([
-                //echo \kartik\grid\GridView::widget([
-                'dataProvider' => $dataProvider,
-             ]);
-        
+        echo GridView::widget([
+            //echo \kartik\grid\GridView::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => [
+                [
+                    'attribute' => 'id',
+                    'label'=>'KPI'
+                ],
+                [
+                    'attribute' => 'topic',
+                     'label'=>'ตัวชี้วัด',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return Html::a($data['topic'],['region/changwat','kpi_id'=>$data['id']]);
+                    }
+                ],
+                [
+                    'attribute' => 'target',
+                    'label'=>'เป้าหมาย'
+                ],
+                [
+                    'attribute' => 'total',
+                     'label'=>'ผลงาน'
+                ],
+                [
+                    'attribute' => 'ratio',
+                     'label'=>'ร้อยละ'
+                ],
+            ]
+        ]);
         ?>
 
         <!--จบ content-->
