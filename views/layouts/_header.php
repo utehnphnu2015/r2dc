@@ -21,9 +21,7 @@ use yii\helpers\Url;
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                 <li>
-                    <a href="#" >คลังข้อมูลเขตสุขภาพที่ 2</i></a>
-                </li>
+                
                   <?php echo $this->render('_notify', ['themes' => $themes]) ?>  
                 <!-- Control Sidebar Toggle Button -->
                 <li>
