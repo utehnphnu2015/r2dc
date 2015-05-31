@@ -38,7 +38,7 @@ FROM topic_region t
     public function actionChangwat($kpi_id, $rep_year) {
 
         $sql = " SELECT 
-p.provname,sum(k.target) as target,sum(k.total) as total 
+p.provcode,p.provname,sum(k.target) as target,sum(k.total) as total 
 , ROUND((sum(k.total)*100/sum(k.target)),2) as ratio
 ,sum(k.mon1) as mon1
 ,sum(k.mon2) as mon2
@@ -71,13 +71,41 @@ GROUP BY k.provcode ";
 
 // จบรายจังหวัด
 
-    public function actionAmpur() {
+    public function actionAmpur($kpi_id, $rep_year,$provcode) {
+      $sql = " SELECT  t.ampcode,t.ampname,t.target,t.total,round((t.total*100/t.target),2) as ratio
+,t.mon1
+ from (
+SELECT a.provcode,a.ampcode,a.ampname
+,(SELECT sum(k.target) from kpi_region k 
+WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as target
+,(SELECT sum(k.total) from kpi_region k 
+WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as total
+,(SELECT sum(k.mon1) from kpi_region k 
+WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as mon1
+
+
+from campur a  WHERE a.provcode = $provcode
+) t  ";
+      
+       $raw = $this->queryAll($sql);
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $raw
+        ]);
+
+        return $this->render('ampur', [
+                    'dataProvider' => $dataProvider,
+                    'rep_year' => $rep_year,
+                    'kpi_id'=>$kpi_id,
+                    'provcode'=>$provcode,
+                    
+        ]);
+      
         
     }
 
 // จบรายอำเภอ
 
-    public function actionHospital() {
+    public function actionHospital($kpi_id, $rep_year,$provcode,$ampcode) {
         
     }
 
