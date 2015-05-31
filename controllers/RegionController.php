@@ -37,8 +37,11 @@ FROM topic_region t
 
     public function actionChangwat($kpi_id, $rep_year) {
 
-        $sql = " SELECT 
-p.provcode,p.provname,sum(k.target) as target,sum(k.total) as total 
+        $sql = " SELECT t.rep_year,t.kpi_id,p.provcode,p.provname,t.target,t.total,ROUND((t.total*100/t.target),2) as ratio 
+,t.mon1
+from cchangwat p LEFT JOIN (
+SELECT 
+k.rep_year,k.kpi_id,k.provcode,sum(k.target) as target,sum(k.total) as total 
 , ROUND((sum(k.total)*100/sum(k.target)),2) as ratio
 ,sum(k.mon1) as mon1
 ,sum(k.mon2) as mon2
@@ -52,10 +55,12 @@ p.provcode,p.provname,sum(k.target) as target,sum(k.total) as total
 ,sum(k.mon10) as mon10
 ,sum(k.mon11) as mon11
 ,sum(k.mon12) as mon12
-from kpi_region k  INNER JOIN cchangwat p on  p.provcode = k.provcode
 
-where k.kpi_id = $kpi_id and k.rep_year = $rep_year 
-GROUP BY k.provcode ";
+from kpi_region k 
+
+where k.kpi_id = $kpi_id and k.rep_year =$rep_year
+GROUP BY k.provcode ) 
+t on t.provcode = p.provcode ";
 
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
@@ -72,20 +77,21 @@ GROUP BY k.provcode ";
 // จบรายจังหวัด
 
     public function actionAmpur($kpi_id, $rep_year,$provcode) {
-      $sql = " SELECT  t.ampcode,t.ampname,t.target,t.total,round((t.total*100/t.target),2) as ratio
+      $sql = " SELECT t.rep_year,t.kpi_id,a.provcode,a.ampcode,a.ampname,t.target,t.total,ROUND(t.total*100/t.target,2) as ratio 
 ,t.mon1
- from (
-SELECT a.provcode,a.ampcode,a.ampname
-,(SELECT sum(k.target) from kpi_region k 
-WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as target
-,(SELECT sum(k.total) from kpi_region k 
-WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as total
-,(SELECT sum(k.mon1) from kpi_region k 
-WHERE k.ampcode=a.ampcode and k.provcode=a.provcode AND k.kpi_id=$kpi_id and k.rep_year=$rep_year) as mon1
+FROM campur a  LEFT JOIN (
+SELECT k.rep_year,k.kpi_id,k.provcode,k.ampcode
+,SUM(k.target) as target
+,SUM(k.total) as total
+,SUM(k.mon1) as mon1
 
+ from kpi_region k 
+ 
+WHERE k.kpi_id =  $kpi_id and k.rep_year = $rep_year
 
-from campur a  WHERE a.provcode = $provcode
-) t  ";
+GROUP BY  CONCAT(k.provcode,k.ampcode)
+) t on t.provcode = a.provcode and t.ampcode = a.ampcode
+WHERE a.provcode = $provcode  ";
       
        $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
@@ -107,9 +113,21 @@ from campur a  WHERE a.provcode = $provcode
 
     public function actionHospital($kpi_id, $rep_year,$provcode,$ampcode) {
         
-        $sql = " SELECT h.hosname,k.* FROM kpi_region k  LEFT JOIN chospital2 h on h.hospcode = k.hospcode
+        $sql = " SELECT t.rep_year,t.kpi_id,h.hospcode,h.hosname,h.provcode,h.ampcode,t.target,t.total,t.ratio
+,t.mon1
+from chospital2 h  LEFT JOIN (
+SELECT 
+k.rep_year,k.kpi_id,k.provcode,k.ampcode,k.hospcode
+,k.target
+,k.total
+,k.ratio
+,k.mon1
+FROM kpi_region k 
 
-WHERE k.kpi_id = $kpi_id  and k.rep_year = $rep_year  AND k.provcode = $provcode and k.ampcode = $ampcode ";
+WHERE k.rep_year = $rep_year and k.kpi_id = $kpi_id 
+) t on  t.hospcode = h.hospcode
+
+WHERE  h.provcode=$provcode and h.ampcode=$ampcode ";
         
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
