@@ -31,16 +31,11 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             'dataProvider' => $dataProvider,
             'summary' => '',
             'columns' => [
-                  [
-                    'attribute' => 'rep_year',
-                    'label' => 'ปีงบ'
-                ],
-                [
-                    'attribute' => 'id',
-                    'label' => 'KPI'
-                ],
-               
-                [
+                    [
+                            'attribute' => 'id',
+                            'label' => 'KPI'
+                     ],
+                    [
                     'attribute' => 'topic',
                     'label' => 'ตัวชี้วัด',
                     'format' => 'raw',
@@ -53,17 +48,26 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
 
                         return Html::a($data['topic'], $params);
                     }],
+                        
                         [
-                            'attribute' => 'target',
-                            'label' => 'เป้าหมาย'
+                            'attribute' => 'p53',
+                            'label' => 'อุตรดิตถ์'
                         ],
-                        [
-                            'attribute' => 'total',
-                            'label' => 'ผลงาน'
+                             [
+                            'attribute' => 'p63',
+                            'label' => 'ตาก'
                         ],
-                        [
-                            'attribute' => 'ratio',
-                            'label' => 'ร้อยละ'
+                             [
+                            'attribute' => 'p64',
+                            'label' => 'สุโขทัย'
+                        ],
+                             [
+                            'attribute' => 'p65',
+                            'label' => 'พิษณุโลก'
+                        ],
+                             [
+                            'attribute' => 'p67',
+                            'label' => 'เพชรบูรณ์'
                         ],
                     ]
                 ]);

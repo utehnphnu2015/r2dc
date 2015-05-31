@@ -13,16 +13,22 @@ class RegionController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "  SELECT  t.id,($rep_year+543) as 'rep_year',t.topic
-            ,if(t.target is null,0,t.target) as target
-            ,if(t.total is null,0,t.total) as total
-            ,if(target is null,0.00,round(t.total*100/t.target,2)) as ratio  from 
-            ( SELECT id,topic 
-,(SELECT SUM(k.target) from kpi_region k WHERE k.kpi_id = t.id and k.rep_year=$rep_year) as target
-,(SELECT SUM(k.total) from kpi_region k WHERE k.kpi_id = t.id and k.rep_year=$rep_year) as total
+        $sql = " SELECT k.id,k.topic
+,if(k.p53 is NULL,0,k.p53) as p53
+,if(k.p63 is NULL,0,k.p63) as p63
+,if(k.p64 is NULL,0,k.p64) as p64
+,if(k.p65 is NULL,0,k.p65) as p65
+,if(k.p67 is NULL,0,k.p67) as p67
+from (
+            
+ SELECT  t.id,t.topic
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
 
-FROM topic_region t 
-) t ";
+FROM topic_region t) k ";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
@@ -77,7 +83,8 @@ t on t.provcode = p.provcode ";
 // จบรายจังหวัด
 
     public function actionAmpur($kpi_id, $rep_year,$provcode) {
-      $sql = " SELECT t.rep_year,t.kpi_id,a.provcode,a.ampcode,a.ampname,t.target,t.total,ROUND(t.total*100/t.target,2) as ratio 
+      $sql = " SELECT t.rep_year,t.kpi_id,a.provcode,a.ampcode,a.ampname
+          ,t.target,t.total,ROUND(t.total*100/t.target,2) as ratio 
 ,t.mon1
 FROM campur a  LEFT JOIN (
 SELECT k.rep_year,k.kpi_id,k.provcode,k.ampcode
@@ -113,15 +120,15 @@ WHERE a.provcode = $provcode  ";
 
     public function actionHospital($kpi_id, $rep_year,$provcode,$ampcode) {
         
-        $sql = " SELECT t.rep_year,t.kpi_id,h.hospcode,h.hosname,h.provcode,h.ampcode,t.target,t.total,t.ratio
-,t.mon1
+        $sql = " SELECT t.rep_year,t.kpi_id,h.hospcode,h.hosname,t.target,t.total,t.ratio
+,t.mon1,t.mon2,t.mon3,t.mon4,t.mon5,t.mon6,t.mon7,t.mon8,t.mon9,t.mon10,t.mon11,t.mon12
 from chospital2 h  LEFT JOIN (
 SELECT 
 k.rep_year,k.kpi_id,k.provcode,k.ampcode,k.hospcode
 ,k.target
 ,k.total
 ,k.ratio
-,k.mon1
+,k.mon1,k.mon2,k.mon3,k.mon4,k.mon5,k.mon6,k.mon7,k.mon8,k.mon9,k.mon10,k.mon11,k.mon12
 FROM kpi_region k 
 
 WHERE k.rep_year = $rep_year and k.kpi_id = $kpi_id 
