@@ -31,14 +31,15 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             'dataProvider' => $dataProvider,
             'summary' => '',
             'columns' => [
+                  [
+                    'attribute' => 'rep_year',
+                    'label' => 'ปีงบ'
+                ],
                 [
                     'attribute' => 'id',
                     'label' => 'KPI'
                 ],
-                 [
-                    'attribute' => 'rep_year',
-                    'label' => 'ปีงบประมาณ'
-                ],
+               
                 [
                     'attribute' => 'topic',
                     'label' => 'ตัวชี้วัด',
