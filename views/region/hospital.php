@@ -8,8 +8,8 @@ use app\models\TopicRegion;
 
 <?php
 $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี้วัดระดับเขต', 'url' => ['index', 'rep_year' => $rep_year]];
-$this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','url' => ['changwat','kpi_id'=>$kpi_id ,'rep_year' => $rep_year]];
-$this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ','url' => ['ampur','kpi_id'=>$kpi_id ,'rep_year' => $rep_year,'provcode'=>$provcode]];  
+$this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด', 'url' => ['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]];
+$this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ', 'url' => ['ampur', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'provcode' => $provcode]];
 ?>
 <!-- Default box -->
 <div class="box">
@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ','url' =>
                 <?php
                 $topic = TopicRegion::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
-               
                 ?>
             </span>
         </h3>
@@ -30,16 +29,16 @@ $this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ','url' =>
             </button>
         </div>  
         <div style="color: teal">
-            <h4><?=$topic['topic'];?></h4>
+            <h4><?= $topic['topic']; ?></h4>
         </div>
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
         <div class="pull-left">
-         <a class="btn btn-flat btn-success" 
-            href="<?=  Url::to(['ampur','kpi_id'=>$kpi_id,'rep_year'=>$rep_year,'provcode'=>$provcode])?>">
-             <i class="fa fa-undo"></i>
-         </a>
+            <a class="btn btn-flat btn-success" 
+               href="<?= Url::to(['ampur', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'provcode' => $provcode]) ?>">
+                <i class="fa fa-undo"></i>
+            </a>
         </div>
         <div class="pull-right">
             <h4>
@@ -49,8 +48,79 @@ $this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ','url' =>
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,
-            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
-            ]);
+            'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '0'],
+            'summary' => '',
+            'columns' => [
+                [
+                    'attribute' => 'hospcode',
+                    'label' => ''
+                ],
+                [
+                    'attribute' => 'hosname',
+                    'label' => 'หน่วยบริการ',
+                ],
+                [
+                    'attribute' => 'target',
+                    'header' => 'เป้าหมาย'
+                ],
+                [
+                    'attribute' => 'total',
+                    'header' => 'ผลงาน'
+                ],
+                [
+                    'attribute' => 'ratio',
+                    'header' => 'อัตรา(%)'
+                ],
+                [
+                    'attribute' => 'mon1',
+                    'header' => 'ตค.'
+                ],
+                [
+                    'attribute' => 'mon2',
+                    'header' => 'พย.'
+                ],
+                [
+                    'attribute' => 'mon3',
+                    'header' => 'ธค.'
+                ],
+                [
+                    'attribute' => 'mon4',
+                    'header' => 'มค.'
+                ],
+                [
+                    'attribute' => 'mon5',
+                    'header' => 'กพ.'
+                ],
+                [
+                    'attribute' => 'mon6',
+                    'header' => 'มีค.'
+                ],
+                [
+                    'attribute' => 'mon7',
+                    'header' => 'เมย.'
+                ],
+                [
+                    'attribute' => 'mon8',
+                    'header' => 'พค.'
+                ],
+                [
+                    'attribute' => 'mon9',
+                    'header' => 'มิย.'
+                ],
+                [
+                    'attribute' => 'mon10',
+                    'header' => 'กค.'
+                ],
+                [
+                    'attribute' => 'mon11',
+                    'header' => 'สค.'
+                ],
+                [
+                    'attribute' => 'mon12',
+                    'header' => 'กย.'
+                ],
+            ]
+        ]);
         ?>
 
 
