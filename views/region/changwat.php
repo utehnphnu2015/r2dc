@@ -173,9 +173,9 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                     ?>
                 </div>
                 <?php
+                // เตรียมข้อมูลสำหรับกราฟ
                 $model = $dataProvider->getModels();
                 $data = [];
-
                 for ($i = 0; $i < count($model); $i++) {
                     $data[] = [
                         'name' => $model[$i]['provname'],
