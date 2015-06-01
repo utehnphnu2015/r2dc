@@ -8,6 +8,7 @@ use app\models\TopicRegion;
 
 <?php
 $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี้วัดระดับเขต', 'url' => ['index', 'rep_year' => $rep_year]];
+$this->params['breadcrumbs'][]='รายจังหวัด';
 ?>
 <!-- Default box -->
 <div class="box">

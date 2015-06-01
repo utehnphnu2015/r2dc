@@ -10,6 +10,7 @@ use app\models\TopicRegion;
 $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี้วัดระดับเขต', 'url' => ['index', 'rep_year' => $rep_year]];
 $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด', 'url' => ['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]];
 $this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ', 'url' => ['ampur', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'provcode' => $provcode]];
+$this->params['breadcrumbs'][]='รายสถานบริการ';
 ?>
 <!-- Default box -->
 <div class="box">
