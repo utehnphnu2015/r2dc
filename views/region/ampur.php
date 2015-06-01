@@ -9,7 +9,7 @@ use app\models\TopicRegion;
 <?php
 $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี้วัดระดับเขต', 'url' => ['index', 'rep_year' => $rep_year]];
 $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด', 'url' => ['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]];
-$this->params['breadcrumbs'][]='รายอำเภอ';
+$this->params['breadcrumbs'][] = 'รายอำเภอ';
 ?>
 <!-- Default box -->
 <div class="box">
@@ -34,110 +34,113 @@ $this->params['breadcrumbs'][]='รายอำเภอ';
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
-        <div class="pull-left">
-            <a class="btn btn-flat btn-warning"
-               href="<?= Url::to(['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]) ?>">
-                <i class="fa fa-undo"></i>
-            </a> 
+        <div class="before-body" style="margin-top:  5dp;margin-bottom: 5dp">
+            <div class="pull-left">
+                <a class="btn btn-flat btn-warning"
+                   href="<?= Url::to(['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]) ?>">
+                    <i class="fa fa-undo"></i>
+                </a> 
+            </div>
+            <div class="pull-right">
+                <h4>
+                    <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
+                </h4>
+            </div>
         </div>
-        <div class="pull-right">
-            <h4>
-                <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
-            </h4>
+        <hr style="color: white;line-height: 0px;border-color: white">
+        <div class="grid-content">
+            <?php
+            echo GridView::widget([
+                'dataProvider' => $dataProvider,
+                'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '0'],
+                'summary' => '',
+                'columns' => [
+                    [
+                        'attribute' => 'ampcode',
+                        'label' => ''
+                    ],
+                    [
+                        'attribute' => 'ampname',
+                        'label' => 'อำเภอ',
+                        'format' => 'raw',
+                        'value' => function($data) use ($kpi_id, $rep_year, $provcode) {
+                            $params = [
+                                'region/hospital', // action
+                                'kpi_id' => $kpi_id,
+                                'rep_year' => $rep_year,
+                                'provcode' => $provcode,
+                                'ampcode' => $data['ampcode']
+                            ];
+
+                            return Html::a($data['ampname'], $params);
+                        }
+                            ],
+                            [
+                                'attribute' => 'target',
+                                'header' => 'เป้าหมาย'
+                            ],
+                            [
+                                'attribute' => 'total',
+                                'header' => 'ผลงาน'
+                            ],
+                            [
+                                'attribute' => 'ratio',
+                                'header' => 'อัตรา(%)'
+                            ],
+                            [
+                                'attribute' => 'mon1',
+                                'header' => 'ตค.'
+                            ],
+                            [
+                                'attribute' => 'mon2',
+                                'header' => 'พย.'
+                            ],
+                            [
+                                'attribute' => 'mon3',
+                                'header' => 'ธค.'
+                            ],
+                            [
+                                'attribute' => 'mon4',
+                                'header' => 'มค.'
+                            ],
+                            [
+                                'attribute' => 'mon5',
+                                'header' => 'กพ.'
+                            ],
+                            [
+                                'attribute' => 'mon6',
+                                'header' => 'มีค.'
+                            ],
+                            [
+                                'attribute' => 'mon7',
+                                'header' => 'เมย.'
+                            ],
+                            [
+                                'attribute' => 'mon8',
+                                'header' => 'พค.'
+                            ],
+                            [
+                                'attribute' => 'mon9',
+                                'header' => 'มิย.'
+                            ],
+                            [
+                                'attribute' => 'mon10',
+                                'header' => 'กค.'
+                            ],
+                            [
+                                'attribute' => 'mon11',
+                                'header' => 'สค.'
+                            ],
+                            [
+                                'attribute' => 'mon12',
+                                'header' => 'กย.'
+                            ],
+                    ]]);
+                    ?>
+
+
+            <!--จบ content-->
         </div>
-<?php
-echo GridView::widget([
-    'dataProvider' => $dataProvider,
-    'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '0'],
-    'summary' => '',
-    'columns' => [
-        [
-            'attribute' => 'ampcode',
-            'label' => ''
-        ],
-        [
-            'attribute' => 'ampname',
-            'label' => 'อำเภอ',
-            'format' => 'raw',
-            'value' => function($data) use ($kpi_id, $rep_year, $provcode) {
-                $params = [
-                    'region/hospital', // action
-                    'kpi_id' => $kpi_id,
-                    'rep_year' => $rep_year,
-                    'provcode' => $provcode,
-                    'ampcode' => $data['ampcode']
-                ];
 
-                return Html::a($data['ampname'], $params);
-            }
-                ],
-                [
-                    'attribute' => 'target',
-                    'header' => 'เป้าหมาย'
-                ],
-                [
-                    'attribute' => 'total',
-                    'header' => 'ผลงาน'
-                ],
-                [
-                    'attribute' => 'ratio',
-                    'header' => 'อัตรา(%)'
-                ],
-                [
-                    'attribute' => 'mon1',
-                    'header' => 'ตค.'
-                ],
-                [
-                    'attribute' => 'mon2',
-                    'header' => 'พย.'
-                ],
-                [
-                    'attribute' => 'mon3',
-                    'header' => 'ธค.'
-                ],
-                [
-                    'attribute' => 'mon4',
-                    'header' => 'มค.'
-                ],
-                [
-                    'attribute' => 'mon5',
-                    'header' => 'กพ.'
-                ],
-                [
-                    'attribute' => 'mon6',
-                    'header' => 'มีค.'
-                ],
-                [
-                    'attribute' => 'mon7',
-                    'header' => 'เมย.'
-                ],
-                [
-                    'attribute' => 'mon8',
-                    'header' => 'พค.'
-                ],
-                [
-                    'attribute' => 'mon9',
-                    'header' => 'มิย.'
-                ],
-                [
-                    'attribute' => 'mon10',
-                    'header' => 'กค.'
-                ],
-                [
-                    'attribute' => 'mon11',
-                    'header' => 'สค.'
-                ],
-                [
-                    'attribute' => 'mon12',
-                    'header' => 'กย.'
-                ],
-        ]]);
-        ?>
-
-
-        <!--จบ content-->
-    </div>
-    <div class="box-footer">
-
-    </div>
-</div><!-- /.box -->
+    </div><!-- /.box -->
+</div>
