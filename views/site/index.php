@@ -22,7 +22,7 @@ $qof = $command->queryScalar();
                     <p>ตัวชี้วัดกระทรวง</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="ion ion-medkit"></i>
                 </div>
                 <a href="<?php echo Url::to(['moph/index']); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
 
