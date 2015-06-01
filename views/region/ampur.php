@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][]='รายอำเภอ';
     <div class="box-body">
         <!--เริ่ม content-->
         <div class="pull-left">
-            <a class="btn btn-flat btn-success"
+            <a class="btn btn-flat btn-warning"
                href="<?= Url::to(['changwat', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]) ?>">
                 <i class="fa fa-undo"></i>
             </a> 

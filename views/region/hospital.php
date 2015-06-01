@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][]='รายสถานบริการ';
     <div class="box-body">
         <!--เริ่ม content-->
         <div class="pull-left">
-            <a class="btn btn-flat btn-success" 
+            <a class="btn btn-flat btn-warning" 
                href="<?= Url::to(['ampur', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'provcode' => $provcode]) ?>">
                 <i class="fa fa-undo"></i>
             </a>
