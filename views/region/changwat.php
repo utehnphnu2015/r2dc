@@ -138,8 +138,93 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                     ?>
 
 
-            <!--จบ content-->
+                    <!--จบ content-->
+                </div>
+
+            </div><!-- /.box -->
         </div>
 
-    </div><!-- /.box -->
+        <!--ส่วนแสดงกราฟ-->
+        <div class="box">
+            <div class="box-header with-border">
+                <div><h4>แผนภูมิ</h4></div>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <?php
+
+                use miloschuman\highcharts\Highcharts;
+                ?>
+                <div style="display: none">
+                    <?php
+                    echo Highcharts::widget([
+                        'scripts' => [
+                            'highcharts-more', // enables supplementary chart types (gauge, arearange, columnrange, etc.)
+                            //'modules/exporting', // adds Exporting button/menu to chart
+                            //'themes/grid',       // applies global 'grid' theme to all charts
+                            //'highcharts-3d',
+                            'modules/drilldown'
+                        ]
+                    ]);
+                    ?>
+                </div>
+                <?php
+                // เตรียมข้อมูลสำหรับกราฟ
+                $model = $dataProvider->getModels();
+                $data = [];
+                for ($i = 0; $i < count($model); $i++) {
+                    $data[] = [
+                        'name' => $model[$i]['provname'],
+                        'y' => $model[$i]['ratio'] * 1
+                    ];
+                }
+                $chart_data = json_encode($data);
+                ?>
+
+
+                <div id="chart">แสดงกราฟ</div>
+
+                <?php
+                $topic=$topic['topic'];
+                $this->registerJs(" 
+    $(function () {
+    $('#chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+         credits: {
+            enabled: false
+        },
+        title: {
+            text: '$topic'
+        },
+        
+         yAxis: {
+            min: 0,
+            title: {
+                text: 'อัตรา (%)'
+            },
+            
+        },
+         xAxis: {
+            type: 'category'
+        },
+       
+        series: [{
+                name: 'จังหวัด',
+                colorByPoint: true,
+                data:$chart_data
+        }]
+     });
+    });
+");
+                ?>
+
+
+    </div>
 </div>
+        <!-- จบกราฟ-->
