@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,
+            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
             'summary' => '',
             'columns' => [
                     [

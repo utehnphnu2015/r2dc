@@ -38,6 +38,7 @@ $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','u
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,
+            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
             'summary' => '',
             'columns' => [
                 /*[

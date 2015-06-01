@@ -41,6 +41,7 @@ $this->params['breadcrumbs'][] = ['label' => 'รายอำเภอ','url' =>
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,
+            'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
             ]);
         ?>
 
