@@ -50,12 +50,12 @@ $this->params['breadcrumbs'][] = ['label' => 'รายการตัวชี�
         echo GridView::widget([
             'dataProvider' => $dataProvider,
             'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
-            'summary' => '',
+            'summary' => '',            
             'columns' => [
-                /* [
+               [
                   'attribute' => 'provcode',
-                  'label' => 'รหัส'
-                  ], */
+                  'label' => ''
+                  ],
                 [//คลิก column
                     'attribute' => 'provname',
                     'label' => 'จังหวัด',
