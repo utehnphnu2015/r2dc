@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','u
                 <?php
                 $topic = TopicRegion::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
-                echo "-" . $topic['topic'];
+               
                 ?>
             </span>
         </h3>
@@ -28,13 +28,24 @@ $this->params['breadcrumbs'][] = ['label' => 'รายจังหวัด','u
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i>
             </button>
-        </div>        
+        </div>
+        <div style="color: teal">
+            <h4><?=$topic['topic'];?></h4>
+        </div>
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
-        
-         <a class="btn btn-success" href="<?=  Url::to(['changwat','kpi_id'=>$kpi_id,'rep_year'=>$rep_year])?>">ย้อนกลับ</a> 
-
+        <div class="pull-left">
+         <a class="btn btn-flat btn-success"
+            href="<?=  Url::to(['changwat','kpi_id'=>$kpi_id,'rep_year'=>$rep_year])?>">
+             <i class="fa fa-undo"></i>
+         </a> 
+        </div>
+        <div class="pull-right">
+            <h4>
+                <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
+            </h4>
+        </div>
         <?php
         echo GridView::widget([
             'dataProvider' => $dataProvider,

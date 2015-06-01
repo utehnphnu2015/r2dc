@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i>
             </button>
-        </div>        
+        </div>
+        
     </div>
     <div class="box-body">
         <!--เริ่ม content-->
@@ -25,7 +26,7 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             <a  class="btn btn-default" href="<?= Url::to(['index', 'rep_year' => '2015']) ?>">2558</a>
             <a  class="btn btn-default" href="<?= Url::to(['index', 'rep_year' => '2016']) ?>">2559</a>
         </div>
-        <div style=" margin: 1em;">
+        <div class="pull-right">
             <h4>
                 <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
             </h4>
