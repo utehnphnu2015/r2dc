@@ -13,14 +13,7 @@ class RegionController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = " SELECT k.id,k.topic
-,if(k.p53 is NULL,0,k.p53) as p53
-,if(k.p63 is NULL,0,k.p63) as p63
-,if(k.p64 is NULL,0,k.p64) as p64
-,if(k.p65 is NULL,0,k.p65) as p65
-,if(k.p67 is NULL,0,k.p67) as p67
-from (
-            
+        $sql = "
  SELECT  t.id,t.topic
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
@@ -28,7 +21,7 @@ from (
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
 
-FROM topic_region t) k ";
+FROM topic_region t ";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
