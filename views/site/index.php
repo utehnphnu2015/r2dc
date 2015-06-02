@@ -51,7 +51,7 @@ $qof = $command->queryScalar();
                     <p>ตัวชีวัดจังหวัด</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="ion ion-ios-book-outline"></i>
                 </div>
                 <a href="<?php echo Url::to(['province/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -67,6 +67,66 @@ $qof = $command->queryScalar();
                     <i class="ion ion-pie-graph"></i>
                 </div>
                 <a href="<?php echo Url::to(['qof/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    </div>
+</div>
+
+
+<div class="constraints">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-maroon">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>ข้อมูลทั่วไป</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
+
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-teal-active">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>กำลังคน</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-stalker"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-olive">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>การเงินการคลัง</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-erlenmeyer-flask-bubbles"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-light-blue-gradient">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>GIS</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-pin"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
     </div>
