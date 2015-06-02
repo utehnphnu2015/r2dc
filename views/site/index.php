@@ -132,5 +132,62 @@ $qof = $command->queryScalar();
     </div>
 </div>
 
+<div class="constraints">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <div class="small-box bg-fuchsia-active">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>ส่งข้อมูล</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-upload"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
 
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-lime-active">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>สถิติ</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-connection-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-gray-active">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>อื่นๆ</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-erlenmeyer-flask-bubbles"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple-active">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>Back Office</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-settings"></i>
+                </div>
+                <a href="#" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    </div>
+</div>
 
