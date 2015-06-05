@@ -3,9 +3,6 @@
 use fedemotta\datatables\DataTables;
 use yii\helpers\Html;
 
-//$searchModel = new ModelSearch();
-//$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="glyphicon glyphicon-th-list"></i> รายการตัวชี้วัด QOF</h3>
@@ -18,9 +15,8 @@ use yii\helpers\Html;
     </div>
     <div class="box-body">
 
-<?=
-
-DataTables::widget([
+<?php
+echo DataTables::widget([
     'dataProvider' => $dataProvider,
     'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
     //'filterModel' => $searchModel,
