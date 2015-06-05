@@ -6,11 +6,23 @@ use yii\helpers\Html;
 //$searchModel = new ModelSearch();
 //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 ?>
+<div class="box">
+    <div class="box-header with-border">
+        <h3 class="box-title"><i class="glyphicon glyphicon-th-list"></i> รายการตัวชี้วัด QOF</h3>
+        <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+        
+    </div>
+    <div class="box-body">
 
 <?=
 
 DataTables::widget([
     'dataProvider' => $dataProvider,
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
     //'filterModel' => $searchModel,
     'columns' => [
         //['class' => 'yii\grid\SerialColumn'],
@@ -62,6 +74,10 @@ DataTables::widget([
         ]);
 
 
+?>
+
+    </div>
+</div>
 
 
         
