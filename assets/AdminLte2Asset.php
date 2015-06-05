@@ -25,5 +25,6 @@ class AdminLte2Asset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset',
+        'fedemotta\datatables\DataTablesAsset',
     ];
 }

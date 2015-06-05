@@ -2,10 +2,15 @@
 
 namespace app\controllers;
 
-use yii;
+use Yii;
+use yii\data\ArrayDataProvider;
 
 class TestController extends \yii\web\Controller {
 
+     public function queryAll($sql) {
+        return Yii::$app->db->createCommand($sql)->queryAll();
+    }
+    
     public function actionIndex() {
         $connection = Yii::$app->db;
         $sql = "SELECT hoscode,provcode,distcode FROM chospital2 WHERE provcode='62'";
@@ -49,6 +54,19 @@ SELECT 'dd' AS t1,'77' AS s1";
             $s1[] = $data[$i]['s1'];
         }
         return $this->render('test1',['t1'=>$t1,'s1'=>$s1]);
+    }
+    
+    public function actionTest2(){
+        $sql ="select * from topic_qof";
+        $raw = $this->queryAll($sql);
+        
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $raw
+        ]);
+        return $this->render('test2',[
+            'dataProvider'=>$dataProvider
+        ]);
+                
     }
 
 }
