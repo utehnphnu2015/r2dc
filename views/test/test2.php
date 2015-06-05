@@ -2,7 +2,7 @@
 
 use fedemotta\datatables\DataTables;
 use yii\helpers\Html;
-
+?>
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"><i class="glyphicon glyphicon-th-list"></i> รายการตัวชี้วัด QOF</h3>
