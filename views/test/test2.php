@@ -35,23 +35,23 @@ DataTables::widget([
                 ],
             ],
             'clientOptions' => [
-                "info" => false,
+                "info" => TRUE,
                 "responsive" => true,
                 "dom" => 'lfTrtip',
                 "tableTools" => [
                     "aButtons" => [
                         [
                             "sExtends" => "copy",
-                            "sButtonText" => "Copy to clipboard"
+                            "sButtonText" => "Copy"
                         ], [
                             "sExtends" => "csv",
-                            "sButtonText" => "Save to CSV"
+                            "sButtonText" => "CSV"
                         ], [
                             "sExtends" => "xls",
                             "oSelectorOpts" => ["page" => 'current']
                         ], [
                             "sExtends" => "pdf",
-                            "sButtonText" => "Save to PDF"
+                            "sButtonText" => "PDF"
                         ], [
                             "sExtends" => "print",
                             "sButtonText" => "Print"

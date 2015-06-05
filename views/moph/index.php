@@ -3,6 +3,7 @@
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use fedemotta\datatables\DataTables;
 
 //$this->params['breadcrumbs'][] = ['label' => 'หน้าหลัก', 'url' => ['site/index']];
 
@@ -32,7 +33,8 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
             </h4>
         </div>
         <?php
-        echo GridView::widget([
+        //echo GridView::widget([
+        echo DataTables::widget([
             'dataProvider' => $dataProvider,
             'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
             'summary' => '',
