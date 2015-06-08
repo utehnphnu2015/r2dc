@@ -7,8 +7,8 @@ $command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_m
 $moph = $command->queryScalar();
 $command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_region');
 $region = $command->queryScalar();
-$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_province');
-$province = $command->queryScalar();
+//$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_province');
+//$province = $command->queryScalar();
 $command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_qof');
 $qof = $command->queryScalar();
 ?>
@@ -42,20 +42,7 @@ $qof = $command->queryScalar();
                 <a href="<?php echo Url::to(['region/index']); ?>" class="small-box-footer">รายละเอียด <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
-
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-                <div class="inner">
-                    <h3><?= $province ?></h3>
-                    <p>ตัวชีวัดจังหวัด</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-ios-book-outline"></i>
-                </div>
-                <a href="<?php echo Url::to(['province/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div><!-- ./col -->
+        
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
@@ -69,6 +56,21 @@ $qof = $command->queryScalar();
                 <a href="<?php echo Url::to(['qof/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>0</h3>
+                    <p>ตัวชีวัด CMI</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-book-outline"></i>
+                </div>
+                <a href="<?php echo Url::to(['province/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        
     </div>
 </div>
 
