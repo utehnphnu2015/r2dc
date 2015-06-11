@@ -3,13 +3,13 @@
 use yii\helpers\Url;
 
 
-$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_moph');
+$command = Yii::$app->db->createCommand("SELECT COUNT(id) FROM  topic_all WHERE kpi_group='moph'");
 $moph = $command->queryScalar();
-$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_region');
+$command = Yii::$app->db->createCommand("SELECT COUNT(id) FROM  topic_all WHERE kpi_group='region'");
 $region = $command->queryScalar();
 //$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_province');
 //$province = $command->queryScalar();
-$command = Yii::$app->db->createCommand('SELECT COUNT(id) AS tcount FROM topic_qof');
+$command = Yii::$app->db->createCommand("SELECT COUNT(id) FROM  topic_all WHERE kpi_group='qof'");
 $qof = $command->queryScalar();
 ?>
 
