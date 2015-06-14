@@ -14,26 +14,8 @@ use yii\helpers\Url;
 //$kpi_id = $_GET['kpi_id'];
 //$rep_year = $_GET['rep_year'];
 
-if ($model->isNewRecord) {
-    $province = [];
-    $ampur = [];
-
-
-    $district_list = [];
-    $tambon_list = [];
-} else {
-    $province = $model->ctambon->changwatcode;
-    $district = $model->ctambon->amppurcode;
-    $tambon = $model->tamboncode;
-
-    $district_list = ArrayHelper::map(Campur::find()
-                            ->where(['provcode' => $province])->all(), 'ampurcode', 'tambonname');
-    // $tambon_list = ArrayHelper::map(Tambon::find()
-    //        ->where(['district_id'=>$district])->all(), 'id', 'tambon_name');
-}
-
-
-echo $province = $model->Ctambon->changwatcode;
+$kpi_id='';
+        $rep_year='';
 ?>
 
 <div class="kpi-type1-form">
@@ -46,47 +28,31 @@ echo $province = $model->Ctambon->changwatcode;
 
     <?= $form->field($model, 'hospcode')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'provcode')->textInput(['maxlength' => true]) ?>
+   
+    
+    <?=
+    $form->field($model, 'provcode')->dropDownList(
+            ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'), array(
+        'id' => 'provcode',
+        'onchange' =>
+        '$.post("index.php?r=sysconfigmain/listamp&provcode="+this.value,function(data){
+                    $("#ampurcodefull").html(data);
+                     $("#sysconfigmain-distcode").val(data.substring(3,4));
+                });'
+            )
+    );
+    ?>
+    
+    
+    <?php
+    echo $form->field($model, 'ampcode')->dropDownList(
+            ArrayHelper::map(Campur::find()->where(['provcode' =>$model->provcode])->all(), 'ampcodefull', 'ampname'), array(
+        'id' => 'ampcodefull',
+        'prompt' => '--อำเภอ--'
+    ));
+    ?>
 
-    <div class="form-group">
-        <?= Html::label('จังหวัด', 'province'); ?>
-        <?=
-        Html::dropDownList('province', $province, ArrayHelper::map(Cchangwat::find()
-                                ->orderBy('provname ASC')
-                                ->all(), 'provcode', 'provname'), [
-            'class' => 'form-control',
-            'id' => 'province',
-            'prompt' => '-เลือกจังหวัด-',
-            'onchange' => '
-                        $.get("' . Url::toRoute('base/loaddistrict') . '",
-                        {id:$(this).val()})
-                        .done(function(data){
-                            $("select#district").html(data);
-                        });
-                    '
-                ]
-        );
-        ?>
-    </div>
-    <div class="form-grop">
-        <?= Html::label('อำเภอ', 'district'); ?>
-        <?=
-        Html::dropDownList('district', $ampur, $district_list, [
-            'class' => 'form-control',
-            'id' => 'district',
-            'prompt' => '-เลือกอำเภอ-',
-            'onchange' => '
-                $.get("' . Url::toRoute('base/loadtambon') . '",
-                {id:$(this).val()})
-                .done(function(data){
-                    $("select#tambon").html(data);
-                });
-            '
-        ]);
-        ?>
-    </div>
-
-    <?= $form->field($model, 'ampcode')->textInput(['maxlength' => true]) ?>
+   
 
     <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
 
