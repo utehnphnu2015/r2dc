@@ -43,8 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'ampcode',
                 'label' => 'อำเภอ'
             ],
-            // 'target',
-            // 'total',
+            [
+                'attribute' => 'target',
+                'label' => 'เป้าหมาย'
+            ],
+            [
+                'attribute' => 'total',
+                'label' => 'ผลงาน'
+            ],
             // 'mon1',
             // 'mon2',
             // 'mon3',
