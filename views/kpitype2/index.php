@@ -18,17 +18,35 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('เพิ่มข้อมูล Kpi ระดับอำเภอ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'kpi_id',
-            'rep_year',
-            'provcode',
-            'ampcode',
-            'target',
-            // 'total',
+            [
+                'attribute' => 'kpi_id',
+                'label' => 'รหัส Kpi'
+            ],
+            [
+                'attribute' => 'rep_year',
+                'label' => 'ปีงบประมาณ'
+            ],
+            [
+                'attribute' => 'provcode',
+                'label' => 'จังหวัด'
+            ],
+            [
+                'attribute' => 'ampcode',
+                'label' => 'อำเภอ'
+            ],
+            [
+                'attribute' => 'target',
+                'label' => 'เป้าหมาย'
+            ],
+            [
+                'attribute' => 'total',
+                'label' => 'ผลงาน'
+            ],
             // 'mon1',
             // 'mon2',
             // 'mon3',
@@ -42,9 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'mon11',
             // 'mon12',
             // 'ratio',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 
 </div>

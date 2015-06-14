@@ -23,11 +23,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'kpi_id',
-            'rep_year',
-            'provcode',
-            'target',
-            'total',
+            [
+                'attribute' => 'kpi_id',
+                'label' => 'รหัส Kpi'
+            ],
+            [
+                'attribute' => 'rep_year',
+                'label' => 'ปีงบประมาณ'
+            ],
+            [
+                'attribute' => 'provcode',
+                'label' => 'จังหวัด'
+            ],
+            [
+                'attribute' => 'target',
+                'label' => 'เป้าหมาย'
+            ],
+            [
+                'attribute' => 'total',
+                'label' => 'ผลงาน'
+            ],
             // 'mon1',
             // 'mon2',
             // 'mon3',

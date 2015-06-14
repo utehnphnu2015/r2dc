@@ -18,13 +18,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('เพิ่มข้อมูล Kpi ระดับสถานบริการ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'kpi_id',
-            'rep_year',
+            [
+                'attribute'=>'kpi_id',
+                'label'=>'รหัส Kpi'
+            ],
+            [
+                'attribute'=>'rep_year',
+                'label'=>'ปีงบประมาณ'
+            ],
+            
             'hospcode',
             'provcode',
             'ampcode',
@@ -43,9 +50,9 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'mon11',
             // 'mon12',
             // 'ratio',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 
 </div>
