@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kpi Type1s';
+$this->title = 'Kpi ระดับสถานบริการ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kpi-type1-index">
@@ -14,7 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Kpi Type1', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>
+        <?= Html::a('เพิ่มข้อมูล Kpi ระดับสถานบริการ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
