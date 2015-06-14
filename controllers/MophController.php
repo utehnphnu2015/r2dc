@@ -13,15 +13,9 @@ class MophController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "
- SELECT  t.id,t.topic
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_moph k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_moph k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_moph k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_moph k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_moph k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
-
-FROM topic_moph t ";
+        $sql = "SELECT id,topic 
+FROM topic_all 
+WHERE kpi_group='moph'";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
@@ -31,8 +25,9 @@ FROM topic_moph t ";
                     'dataProvider' => $dataProvider,
                     'rep_year' => $rep_year
         ]);
-    } // จบภาพรวมเขต
-    
+    }
+
+// จบภาพรวมเขต
 
     public function actionChangwat($kpi_id, $rep_year) {
 
@@ -72,14 +67,14 @@ t on t.provcode = p.provcode ";
         return $this->render('changwat', [
                     'dataProvider' => $dataProvider,
                     'rep_year' => $rep_year,
-                    'kpi_id'=>$kpi_id
+                    'kpi_id' => $kpi_id
         ]);
     }
 
 // จบรายจังหวัด
 
-    public function actionAmpur($kpi_id, $rep_year,$provcode) {
-      $sql = " SELECT t.rep_year,t.kpi_id,a.provcode,a.ampcode,a.ampname
+    public function actionAmpur($kpi_id, $rep_year, $provcode) {
+        $sql = " SELECT t.rep_year,t.kpi_id,a.provcode,a.ampcode,a.ampname
           ,t.target,t.total,ROUND(t.total*100/t.target,2) as ratio 
           
 ,t.mon1,t.mon2,t.mon3,t.mon4,t.mon5,t.mon6,t.mon7,t.mon8,t.mon9,t.mon10,t.mon11,t.mon12
@@ -109,8 +104,8 @@ WHERE k.kpi_id =  $kpi_id and k.rep_year = $rep_year
 GROUP BY  CONCAT(k.provcode,k.ampcode)
 ) t on t.provcode = a.provcode and t.ampcode = a.ampcode
 WHERE a.provcode = $provcode  ";
-      
-       $raw = $this->queryAll($sql);
+
+        $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
         ]);
@@ -118,18 +113,15 @@ WHERE a.provcode = $provcode  ";
         return $this->render('ampur', [
                     'dataProvider' => $dataProvider,
                     'rep_year' => $rep_year,
-                    'kpi_id'=>$kpi_id,
-                    'provcode'=>$provcode,
-                    
+                    'kpi_id' => $kpi_id,
+                    'provcode' => $provcode,
         ]);
-      
-        
     }
 
 // จบรายอำเภอ
 
-    public function actionHospital($kpi_id, $rep_year,$provcode,$ampcode) {
-        
+    public function actionHospital($kpi_id, $rep_year, $provcode, $ampcode) {
+
         $sql = " SELECT t.rep_year,t.kpi_id,h.hospcode,trim(h.hosname) as hosname,t.target,t.total,t.ratio
 ,t.mon1,t.mon2,t.mon3,t.mon4,t.mon5,t.mon6,t.mon7,t.mon8,t.mon9,t.mon10,t.mon11,t.mon12
 from chospital2 h  LEFT JOIN (
@@ -145,7 +137,7 @@ WHERE k.rep_year = $rep_year and k.kpi_id = $kpi_id
 ) t on  t.hospcode = h.hospcode
 
 WHERE  h.provcode=$provcode and h.ampcode=$ampcode ";
-        
+
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
@@ -154,12 +146,9 @@ WHERE  h.provcode=$provcode and h.ampcode=$ampcode ";
         return $this->render('hospital', [
                     'dataProvider' => $dataProvider,
                     'rep_year' => $rep_year,
-                    'kpi_id'=>$kpi_id,
-                    'provcode'=>$provcode,
-                    
+                    'kpi_id' => $kpi_id,
+                    'provcode' => $provcode,
         ]);
-        
-        
     }
 
 //จบรายหน่วยงาน
