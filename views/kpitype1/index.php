@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'hospcode',
-                'label' => 'จังหวัด'
+                'label' => 'สถานบริการ'
             ],
             [
                 'attribute' => 'provcode',
