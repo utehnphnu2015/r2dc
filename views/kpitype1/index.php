@@ -24,17 +24,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
-                'attribute'=>'kpi_id',
-                'label'=>'รหัส Kpi'
+                'attribute' => 'kpi_id',
+                'label' => 'รหัส Kpi'
             ],
             [
-                'attribute'=>'rep_year',
-                'label'=>'ปีงบประมาณ'
+                'attribute' => 'rep_year',
+                'label' => 'ปีงบประมาณ'
             ],
-            
-            'hospcode',
-            'provcode',
-            'ampcode',
+            [
+                'attribute' => 'hospcode',
+                'label' => 'จังหวัด'
+            ],
+            [
+                'attribute' => 'provcode',
+                'label' => 'จังหวัด'
+            ],
+            [
+                'attribute' => 'ampcode',
+                'label' => 'อำเภอ'
+            ],
             // 'target',
             // 'total',
             // 'mon1',
