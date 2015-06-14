@@ -5,7 +5,6 @@ use yii\widgets\ActiveForm;
 use app\models\Cchangwat;
 use app\models\Campur;
 use app\models\Ctambon;
-use app\models\KpiType1;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
