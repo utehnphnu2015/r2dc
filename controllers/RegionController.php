@@ -13,15 +13,15 @@ class RegionController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "
- SELECT  t.id,t.topic
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_region k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
+        $sql = "SELECT  t.id,t.topic
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
 
-FROM topic_region t ";
+FROM topic_all t
+WHERE t.kpi_group='region' ";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
@@ -58,9 +58,9 @@ k.rep_year,k.kpi_id,k.provcode,sum(k.target) as target,sum(k.total) as total
 ,sum(k.mon11) as mon11
 ,sum(k.mon12) as mon12
 
-from kpi_region k 
+from kpi_type_total k 
 
-where k.kpi_id = $kpi_id and k.rep_year =$rep_year
+where k.kpi_id = '$kpi_id' and k.rep_year =$rep_year
 GROUP BY k.provcode ) 
 t on t.provcode = p.provcode ";
 
@@ -102,9 +102,9 @@ k.rep_year,k.kpi_id,k.provcode,k.ampcode,sum(k.target) as target,sum(k.total) as
 ,sum(k.mon11) as mon11
 ,sum(k.mon12) as mon12
 
- from kpi_region k 
+ from kpi_type_total k 
  
-WHERE k.kpi_id =  $kpi_id and k.rep_year = $rep_year
+WHERE k.kpi_id =  '$kpi_id' and k.rep_year = $rep_year
 
 GROUP BY  CONCAT(k.provcode,k.ampcode)
 ) t on t.provcode = a.provcode and t.ampcode = a.ampcode
@@ -139,9 +139,9 @@ k.rep_year,k.kpi_id,k.provcode,k.ampcode,k.hospcode
 ,k.total
 ,k.ratio
 ,k.mon1,k.mon2,k.mon3,k.mon4,k.mon5,k.mon6,k.mon7,k.mon8,k.mon9,k.mon10,k.mon11,k.mon12
-FROM kpi_region k 
+FROM kpi_type_total k 
 
-WHERE k.rep_year = $rep_year and k.kpi_id = $kpi_id 
+WHERE k.rep_year = $rep_year and k.kpi_id = '$kpi_id' 
 ) t on  t.hospcode = h.hospcode
 
 WHERE  h.provcode=$provcode and h.ampcode=$ampcode ";

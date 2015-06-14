@@ -13,9 +13,15 @@ class MophController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "SELECT id,topic 
-FROM topic_all 
-WHERE kpi_group='moph'";
+        $sql = "SELECT  t.id,t.topic
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
+
+FROM topic_all t
+WHERE t.kpi_group='moph'";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
@@ -30,7 +36,7 @@ WHERE kpi_group='moph'";
 // จบภาพรวมเขต
 
     public function actionChangwat($kpi_id, $rep_year) {
-
+        //echo $kpi_id.'ff';
         $sql = " SELECT t.rep_year,t.kpi_id,p.provcode,p.provname,t.target,t.total,ROUND((t.total*100/t.target),2) as ratio
             
 ,t.mon1,t.mon2,t.mon3,t.mon4,t.mon5,t.mon6,t.mon7,t.mon8,t.mon9,t.mon10,t.mon11,t.mon12
@@ -53,9 +59,9 @@ k.rep_year,k.kpi_id,k.provcode,sum(k.target) as target,sum(k.total) as total
 ,sum(k.mon11) as mon11
 ,sum(k.mon12) as mon12
 
-from kpi_moph k 
+from kpi_type_total k 
 
-where k.kpi_id = $kpi_id and k.rep_year =$rep_year
+where k.kpi_id = '$kpi_id' and k.rep_year =$rep_year
 GROUP BY k.provcode ) 
 t on t.provcode = p.provcode ";
 
@@ -97,9 +103,9 @@ k.rep_year,k.kpi_id,k.provcode,k.ampcode,sum(k.target) as target,sum(k.total) as
 ,sum(k.mon11) as mon11
 ,sum(k.mon12) as mon12
 
- from kpi_moph k 
+ from kpi_type_total k 
  
-WHERE k.kpi_id =  $kpi_id and k.rep_year = $rep_year
+WHERE k.kpi_id =  '$kpi_id' and k.rep_year = $rep_year
 
 GROUP BY  CONCAT(k.provcode,k.ampcode)
 ) t on t.provcode = a.provcode and t.ampcode = a.ampcode
@@ -131,9 +137,9 @@ k.rep_year,k.kpi_id,k.provcode,k.ampcode,k.hospcode
 ,k.total
 ,k.ratio
 ,k.mon1,k.mon2,k.mon3,k.mon4,k.mon5,k.mon6,k.mon7,k.mon8,k.mon9,k.mon10,k.mon11,k.mon12
-FROM kpi_moph k 
+FROM kpi_type_total k 
 
-WHERE k.rep_year = $rep_year and k.kpi_id = $kpi_id 
+WHERE k.rep_year = $rep_year and k.kpi_id = '$kpi_id'
 ) t on  t.hospcode = h.hospcode
 
 WHERE  h.provcode=$provcode and h.ampcode=$ampcode ";
