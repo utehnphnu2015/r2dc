@@ -50,8 +50,12 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                 <?php if($topic['resource']=='INPUT'){ ?>
                 <div class="col-md-4">
                     <a class="btn btn-flat btn-success"
-                         <?php if($topic['resource']=='INPUT'){ ?>
-                       href="<?= Url::to(['kpitype1/create', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
+                         <?php if($topic['table_type']=='1'){ ?>
+                            href="<?= Url::to(['kpitype1/create', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
+                         <?php }else if($topic['table_type']=='2'){ ?>
+                            href="<?= Url::to(['kpitype2/create', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
+                         <?php }else{ ?>
+                            href="<?= Url::to(['kpitype3/create', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
                          <?php }?>
                         <i class="fa fa-plus-square"></i>
                     </a> 
