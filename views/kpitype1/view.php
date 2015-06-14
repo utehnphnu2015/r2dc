@@ -16,16 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode], [
+        <?=
+        Html::a('Delete', ['delete', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
+    <?=
+    DetailView::widget([
         'model' => $model,
         'attributes' => [
             'kpi_id',
@@ -49,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'mon12',
             'ratio',
         ],
-    ]) ?>
+    ])
+    ?>
 
 </div>
