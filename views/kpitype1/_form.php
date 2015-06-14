@@ -34,12 +34,11 @@ if ($model->isNewRecord) {
 
 
 echo $province = $model->Ctambon->changwatcode;
-;
 ?>
 
 <div class="kpi-type1-form">
 
-<?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'kpi_id')->textInput(['maxlength' => true, 'value' => $kpi_id, 'readonly' => true]) ?>
 
@@ -50,7 +49,7 @@ echo $province = $model->Ctambon->changwatcode;
     <?= $form->field($model, 'provcode')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-<?= Html::label('จังหวัด', 'province'); ?>
+        <?= Html::label('จังหวัด', 'province'); ?>
         <?=
         Html::dropDownList('province', $province, ArrayHelper::map(Cchangwat::find()
                                 ->orderBy('provname ASC')
@@ -70,7 +69,7 @@ echo $province = $model->Ctambon->changwatcode;
         ?>
     </div>
     <div class="form-grop">
-<?= Html::label('อำเภอ', 'district'); ?>
+        <?= Html::label('อำเภอ', 'district'); ?>
         <?=
         Html::dropDownList('district', $ampur, $district_list, [
             'class' => 'form-control',
