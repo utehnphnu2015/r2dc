@@ -18,7 +18,7 @@ class MophController extends \yii\web\Controller {
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
 ,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p67'
+,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 67 AND k.rep_year=$rep_year) as  'p67'
 
 FROM topic_all t
 WHERE t.kpi_group='moph'";
