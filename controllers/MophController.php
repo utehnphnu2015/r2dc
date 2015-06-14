@@ -61,7 +61,7 @@ k.rep_year,k.kpi_id,k.provcode,sum(k.target) as target,sum(k.total) as total
 
 from kpi_type_total k 
 
-where k.kpi_id = '$kpi_id' and k.rep_year =$rep_year
+where k.kpi_id = '$kpi_id' and k.rep_year =$rep_year 
 GROUP BY k.provcode ) 
 t on t.provcode = p.provcode ";
 
@@ -73,7 +73,7 @@ t on t.provcode = p.provcode ";
         return $this->render('changwat', [
                     'dataProvider' => $dataProvider,
                     'rep_year' => $rep_year,
-                    'kpi_id' => $kpi_id
+                    'kpi_id' => $kpi_id,
         ]);
     }
 
