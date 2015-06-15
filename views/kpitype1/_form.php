@@ -35,9 +35,10 @@ use yii\helpers\Url;
         <div class="col-md-4">
             <?=
             $form->field($model, 'provcode')->dropDownList(
-                    ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'), array(
-                'id' => 'provcode',
-                    )
+                    ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'),[
+                        'id' => 'dlProv',
+                         'prompt' => '--จังหวัด--'
+                    ]
             );
             ?>
         </div>
@@ -121,3 +122,31 @@ use yii\helpers\Url;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$route_get_amp = \Yii::$app->urlManager->createUrl(['ajax/get-amp']);
+
+$js = <<<JS
+ 
+   $('#dlProv').on('change', function(){
+       //alert($(this).val());
+        var param = $(this).val();
+        $.ajax({
+	type: "GET",
+        dataType: "json",
+	url: "$route_get_amp",
+	cache: false,
+	data: "p="+param,
+	success: function(res){ 
+            alert(res[0].ampname)   
+        }
+        });
+        
+   });
+        
+        
+JS;
+?>
+        
+ <?php
+$this->registerJs($js);
+?>
