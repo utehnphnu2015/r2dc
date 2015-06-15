@@ -7,8 +7,7 @@ class AjaxController extends \yii\web\Controller {
 
     public function queryall($sql) {
         return Yii::$app->db->createCommand($sql)->queryAll();
-    }
-    
+    }   
 
 
     public function actionGetAmp($p = null) {
