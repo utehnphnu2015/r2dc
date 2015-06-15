@@ -21,7 +21,11 @@ class AjaxController extends \yii\web\Controller {
     }
 
     public function actionGetHos($p = null, $a = null) {
+        Yii::$app->response->format = "json";
         
+        $sql = "SELECT hospcode,hosname from chospital2  where provcode=$p and ampcode=$a";
+        $raw = $this->queryall($sql);
+        return $raw;   
     }
 
 }

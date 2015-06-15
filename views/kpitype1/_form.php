@@ -14,7 +14,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="kpi-type1-form">
-   
+
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -23,10 +23,10 @@ use yii\helpers\Url;
 
 
     <?= $form->field($model, 'rep_year')->hiddenInput(['value' => $rep_year])->label(FALSE) ?>
-    
-     <div class="row">
+
+    <div class="row">
         <div class="col-md-4">
-            <h4><span style="color: white;background-color:green">ผลการดำเนินงาน ปีงบประมาณ <?=$rep_year+543?></span></h4>
+            <h4><span style="color: white;background-color:green">ผลการดำเนินงาน ปีงบประมาณ <?= $rep_year + 543 ?></span></h4>
         </div>
     </div>
 
@@ -35,9 +35,9 @@ use yii\helpers\Url;
         <div class="col-md-4">
             <?=
             $form->field($model, 'provcode')->dropDownList(
-                    ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'),[
-                        'id' => 'dlProv',
-                         'prompt' => '--จังหวัด--'
+                    ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'), [
+                'id' => 'dlProv',
+                'prompt' => '--จังหวัด--'
                     ]
             );
             ?>
@@ -45,11 +45,11 @@ use yii\helpers\Url;
         <div class="col-md-4">
 
             <?php
-            echo $form->field($model, 'ampcode')->dropDownList(
-                    ArrayHelper::map(Campur::find()->where(['provcode' => $model->provcode])->all(), 'ampcodefull', 'ampname'), array(
+            echo $form->field($model, 'ampcode')->dropDownList([], [
                 'id' => 'dlAmp',
                 'prompt' => '--อำเภอ--'
-            ));
+                    ]
+            );
             ?>
         </div>
 
@@ -57,13 +57,19 @@ use yii\helpers\Url;
 
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'hospcode')->textInput(['maxlength' => true]) ?>
+              <?php
+            echo $form->field($model, 'hospcode')->dropDownList([], [
+                'id' => 'dlHos',
+                'prompt' => '--หน่วยงาน--'
+                    ]
+            );
+            ?>
         </div>
         <div class="col-md-4">
             <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'mon1')->textInput() ?>
@@ -124,38 +130,59 @@ use yii\helpers\Url;
 </div>
 <?php
 $route_get_amp = \Yii::$app->urlManager->createUrl(['ajax/get-amp']);
+$route_get_hos = \Yii::$app->urlManager->createUrl(['ajax/get-hos']);
 
 $js = <<<JS
  
    $('#dlProv').on('change', function(){
-       //alert($(this).val());
+      
         var param = $(this).val();
         $.ajax({
-	type: "GET",
-        dataType: "json",
-	url: "$route_get_amp",
-	cache: false,
-	data: "p="+param,
-	success: function(res){ 
-            //alert(res[0].ampname)
-            $("#dlAmp").empty();
-            $.each(res,function(index,value)
-            {
-                $("#dlAmp").append("<option value="+value.ampcode+">" + value.ampname  + "</option>");
-                
-        
-            });
+            type: "GET",
+            dataType: "json",
+            url: "$route_get_amp",
+            cache: false,
+            data: "p="+param,
+            success: function(res){            
+                $("#dlAmp").empty();
+                $("#dlAmp").append("<option>-- อำเภอ --</option>");
+                $.each(res,function(index,value){
+                    $("#dlAmp").append("<option value="+value.ampcode+">" + value.ampname  + "</option>");                
 
-        
-        }
+                });        
+            }
         });
         
-   });
+   });// จบดึงอำเภอ
+        
+     $('#dlAmp').on('change', function(){
+      
+        var a = $(this).val();
+        var p = $('#dlProv').val();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "$route_get_hos",
+            cache: false,
+            data: "p="+p+"&a="+a,
+            success: function(res){            
+                $("#dlHos").empty();
+                $("#dlHos").append("<option>-- หน่วยงาน --</option>");
+                $.each(res,function(index,value){
+                    $("#dlHos").append("<option value="+value.hospcode+">" + value.hosname  + "</option>");                
+
+                });        
+            }
+        });
+        
+   });// จบดึงสถานบริการ
+        
+   
         
         
 JS;
 ?>
-        
- <?php
+
+<?php
 $this->registerJs($js);
 ?>
