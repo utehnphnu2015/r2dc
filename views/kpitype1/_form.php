@@ -14,6 +14,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="kpi-type1-form">
+   
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -22,6 +23,12 @@ use yii\helpers\Url;
 
 
     <?= $form->field($model, 'rep_year')->hiddenInput(['value' => $rep_year])->label(FALSE) ?>
+    
+     <div class="row">
+        <div class="col-md-4">
+            <h4><span style="color: white;background-color:green">ผลการดำเนินงาน ปีงบประมาณ <?=$rep_year+543?></span></h4>
+        </div>
+    </div>
 
 
     <div class="row">
@@ -55,11 +62,7 @@ use yii\helpers\Url;
             <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            ผลการดำเนินงาน
-        </div>
-    </div>
+    
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'mon1')->textInput() ?>
