@@ -147,7 +147,7 @@ $js = <<<JS
                 $("#dlAmp").empty();
                 $("#dlAmp").append("<option>-- อำเภอ --</option>");
                 $.each(res,function(index,value){
-                    $("#dlAmp").append("<option value="+value.ampcode+">" + value.ampname  + "</option>");                
+                    $("#dlAmp").append("<option value="+value.ampcode+">" + value.ampcode +"-"+ value.ampname  + "</option>");                
 
                 });        
             }
@@ -169,7 +169,7 @@ $js = <<<JS
                 $("#dlHos").empty();
                 $("#dlHos").append("<option>-- หน่วยงาน --</option>");
                 $.each(res,function(index,value){
-                    $("#dlHos").append("<option value="+value.hospcode+">" + value.hosname  + "</option>");                
+                    $("#dlHos").append("<option value="+value.hospcode+">" + value.hospcode+"-"+value.hosname  + "</option>");                
 
                 });        
             }
