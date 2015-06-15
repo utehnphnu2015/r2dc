@@ -14,7 +14,7 @@ class AjaxController extends \yii\web\Controller {
     public function actionGetAmp($p = null) {
         Yii::$app->response->format = "json";
         
-        $sql = "SELECT * from campur  where provcode=$p ";
+        $sql = "SELECT ampcode,ampname from campur  where provcode=$p ";
         $raw = $this->queryall($sql);
         return $raw;      
         

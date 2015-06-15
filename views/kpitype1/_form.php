@@ -47,7 +47,7 @@ use yii\helpers\Url;
             <?php
             echo $form->field($model, 'ampcode')->dropDownList(
                     ArrayHelper::map(Campur::find()->where(['provcode' => $model->provcode])->all(), 'ampcodefull', 'ampname'), array(
-                'id' => 'ampcodefull',
+                'id' => 'dlAmp',
                 'prompt' => '--อำเภอ--'
             ));
             ?>
@@ -137,7 +137,16 @@ $js = <<<JS
 	cache: false,
 	data: "p="+param,
 	success: function(res){ 
-            alert(res[0].ampname)   
+            //alert(res[0].ampname)
+            $("#dlAmp").empty();
+            $.each(res,function(index,value)
+            {
+                $("#dlAmp").append("<option value="+value.ampcode+">" + value.ampname  + "</option>");
+                
+        
+            });
+
+        
         }
         });
         
