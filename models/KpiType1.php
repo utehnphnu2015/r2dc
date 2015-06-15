@@ -60,9 +60,9 @@ class KpiType1 extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'kpi_id' => 'รหัส',
+            'kpi_id' => 'รหัสตัวชี้วัด',
             'rep_year' => 'ปีงบประมาณ',
-            'hospcode' => 'รหัสสถานบริการ',
+            'hospcode' => 'สถานบริการ',
             'provcode' => 'จังหวัด',
             'ampcode' => 'อำเภอ',
             'target' => 'เป้าหมาย',
@@ -79,7 +79,7 @@ class KpiType1 extends \yii\db\ActiveRecord
             'mon10' => 'ก.ค',
             'mon11' => 'ส.ค',
             'mon12' => 'ก.ย',
-            'ratio' => 'Ratio',
+            'ratio' => 'อัตรา',
         ];
     }
 }

@@ -11,81 +11,111 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType1 */
 /* @var $form yii\widgets\ActiveForm */
-//$kpi_id = $_GET['kpi_id'];
-//$rep_year = $_GET['rep_year'];
 
-$kpi_id='';
-        $rep_year='';
 ?>
 
 <div class="kpi-type1-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'kpi_id')->textInput(['maxlength' => true, 'value' => $kpi_id, 'readonly' => true]) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'kpi_id')->textInput(['maxlength' => true, 'value' => $kpi_id, 'readonly' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'rep_year')->textInput(['maxlength' => true, 'value' => $rep_year, 'readonly' => true]) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'rep_year')->textInput(['maxlength' => true, 'value' => $rep_year, 'readonly' => true]) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?=
+            $form->field($model, 'provcode')->dropDownList(
+                    ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'), array(
+                'id' => 'provcode',
+                    )
+            );
+            ?>
+        </div>
+        <div class="col-md-4">
 
-    <?= $form->field($model, 'hospcode')->textInput(['maxlength' => true]) ?>
+            <?php
+            echo $form->field($model, 'ampcode')->dropDownList(
+                    ArrayHelper::map(Campur::find()->where(['provcode' => $model->provcode])->all(), 'ampcodefull', 'ampname'), array(
+                'id' => 'ampcodefull',
+                'prompt' => '--อำเภอ--'
+            ));
+            ?>
+        </div>
+       
+    </div>
 
-   
-    
-    <?=
-    $form->field($model, 'provcode')->dropDownList(
-            ArrayHelper::map(Cchangwat::find()->all(), 'provcode', 'provname'), array(
-        'id' => 'provcode',
-        'onchange' =>
-        '$.post("index.php?r=sysconfigmain/listamp&provcode="+this.value,function(data){
-                    $("#ampurcodefull").html(data);
-                     $("#sysconfigmain-distcode").val(data.substring(3,4));
-                });'
-            )
-    );
-    ?>
-    
-    
-    <?php
-    echo $form->field($model, 'ampcode')->dropDownList(
-            ArrayHelper::map(Campur::find()->where(['provcode' =>$model->provcode])->all(), 'ampcodefull', 'ampname'), array(
-        'id' => 'ampcodefull',
-        'prompt' => '--อำเภอ--'
-    ));
-    ?>
+    <div class="row">
+         <div class="col-md-4">
+            <?= $form->field($model, 'hospcode')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            ผลการดำเนินงาน
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon1')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon2')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon3')->textInput() ?>
+        </div>        
+    </div>
 
-   
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon4')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon5')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon6')->textInput() ?>
+        </div>        
+    </div>
 
-    <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon7')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon8')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon9')->textInput() ?>
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon10')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon11')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'mon12')->textInput() ?>
+        </div>        
+    </div>
 
-    <?= $form->field($model, 'total')->textInput() ?>
 
-    <?= $form->field($model, 'mon1')->textInput() ?>
 
-    <?= $form->field($model, 'mon2')->textInput() ?>
 
-    <?= $form->field($model, 'mon3')->textInput() ?>
-
-    <?= $form->field($model, 'mon4')->textInput() ?>
-
-    <?= $form->field($model, 'mon5')->textInput() ?>
-
-    <?= $form->field($model, 'mon6')->textInput() ?>
-
-    <?= $form->field($model, 'mon7')->textInput() ?>
-
-    <?= $form->field($model, 'mon8')->textInput() ?>
-
-    <?= $form->field($model, 'mon9')->textInput() ?>
-
-    <?= $form->field($model, 'mon10')->textInput() ?>
-
-    <?= $form->field($model, 'mon11')->textInput() ?>
-
-    <?= $form->field($model, 'mon12')->textInput() ?>
-
-    <?= $form->field($model, 'ratio')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'เพิ่ม' : 'แก้ไข', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

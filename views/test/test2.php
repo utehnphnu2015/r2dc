@@ -16,9 +16,10 @@ use yii\helpers\Html;
     <div class="box-body">
 
 <?php
+
 echo DataTables::widget([
     'dataProvider' => $dataProvider,
-    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
+    'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0.00'],
     //'filterModel' => $searchModel,
     'columns' => [
         //['class' => 'yii\grid\SerialColumn'],
@@ -45,6 +46,7 @@ echo DataTables::widget([
             'clientOptions' => [
                 "info" => TRUE,
                 "responsive" => true,
+                 //"lengthMenu"=> [[10,-1], [10,Yii::t('app',"All")]],
                 "dom" => 'lfTrtip',
                 "tableTools" => [
                     "aButtons" => [

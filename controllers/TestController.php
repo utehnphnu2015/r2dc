@@ -57,11 +57,12 @@ SELECT 'dd' AS t1,'77' AS s1";
     }
     
     public function actionTest2(){
-        $sql ="select * from topic_qof";
+        $sql ="select * from topic_moph";
         $raw = $this->queryAll($sql);
         
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $raw
+            'allModels' => $raw,
+            'pagination' => false,
         ]);
         return $this->render('test2',[
             'dataProvider'=>$dataProvider
