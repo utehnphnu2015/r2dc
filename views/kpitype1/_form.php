@@ -11,21 +11,18 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType1 */
 /* @var $form yii\widgets\ActiveForm */
-
 ?>
 
 <div class="kpi-type1-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <div class="row">
-        <div class="col-md-4">
-            <?= $form->field($model, 'kpi_id')->textInput(['maxlength' => true, 'value' => $kpi_id, 'readonly' => true]) ?>
-        </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'rep_year')->textInput(['maxlength' => true, 'value' => $rep_year, 'readonly' => true]) ?>
-        </div>
-    </div>
+
+    <?= $form->field($model, 'kpi_id')->hiddenInput(['value' => $kpi_id])->label(FALSE) ?>
+
+
+    <?= $form->field($model, 'rep_year')->hiddenInput(['value' => $rep_year])->label(FALSE) ?>
+
 
     <div class="row">
         <div class="col-md-4">
@@ -47,11 +44,11 @@ use yii\helpers\Url;
             ));
             ?>
         </div>
-       
+
     </div>
 
     <div class="row">
-         <div class="col-md-4">
+        <div class="col-md-4">
             <?= $form->field($model, 'hospcode')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-4">

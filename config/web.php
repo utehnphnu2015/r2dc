@@ -6,6 +6,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'name'=>'R2DC | คลังข้อมูลเขตสุขภาพที่ 2',
     'id' => 'basic',
+    'language'=>'TH',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
