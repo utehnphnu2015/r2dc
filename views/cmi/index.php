@@ -39,13 +39,14 @@ $this->params['breadcrumbs'][] = 'ตัวชี้วัด CMI';
             'formatter' => ['class' => 'yii\i18n\Formatter', 'nullDisplay' => '0'],
             'summary' => '',
             'columns' => [
-                [
-                   'attribute' => 'provcode',
-                    'label' => 'รหัส' 
-                ],
+                
                 [
                     'attribute' => 'provname',
                     'label' => 'จังหวัด'
+                ],
+                [
+                   'attribute' => 'hospcode',
+                    'label' => 'รหัส' 
                 ],
                 [
                     'attribute' => 'hospname',
