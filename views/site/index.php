@@ -67,7 +67,7 @@ $qof = $command->queryScalar();
                 <div class="icon">
                     <i class="ion ion-ios-book-outline"></i>
                 </div>
-                <a href="<?php echo Url::to(['province/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo Url::to(['cmi/index']); ?>" class="small-box-footer">รายละเอียด<i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div><!-- ./col -->
         
