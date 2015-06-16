@@ -40,7 +40,7 @@ use yii\helpers\Url;
 
             <li><a href="<?php echo Url::to(['region/index']); ?>"><i class="fa fa-circle text-green"></i> <span>ตัวชี้วัดเขต</span> <small class="label pull-right bg-blue"><?=$region?></small></a> </li>
             <li><a href="<?php echo Url::to(['qof/index']); ?>"><i class="fa fa-circle text-red"></i> <span>ตัวชี้วัด QOF</span><small class="label pull-right bg-aqua"><?=$qof?></small></a></li>
-            <li><a href="<?php echo Url::to(['province/index']); ?>"><i class="fa fa-circle text-orange"></i> <span>ตัวชี้วัด CMI</span><small class="label pull-right bg-orange">0</small></a></li>
+            <li><a href="<?php echo Url::to(['cmi/index']); ?>"><i class="fa fa-circle text-orange"></i> <span>ตัวชี้วัด CMI</span><small class="label pull-right bg-orange">0</small></a></li>
             
              <li class="header"><h5><div class="label label-default">ข้อมูลพื้นฐาน</div></h5></li>
                     <li><a href="#"><i class="fa fa-check-circle-o text-red"></i> <span>ข้อมูลทั่วไป</span></a></li>

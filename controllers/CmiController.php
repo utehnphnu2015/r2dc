@@ -6,22 +6,18 @@ use Yii;
 use yii\data\ArrayDataProvider;
 use app\models\TopicMoph;
 
-class MophController extends \yii\web\Controller {
+class CmiController extends \yii\web\Controller {
 
     public function queryAll($sql) {
         return Yii::$app->db->createCommand($sql)->queryAll();
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "SELECT  t.id,t.topic
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 53 AND k.rep_year=$rep_year) as  'p53'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 63 AND k.rep_year=$rep_year) as  'p63'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2) from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 64 AND k.rep_year=$rep_year) as  'p64'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 65 AND k.rep_year=$rep_year) as  'p65'
-,( SELECT ROUND(SUM(k.total)*100/SUM(k.target),2)  from kpi_type_total k WHERE k.kpi_id=t.id AND k.provcode = 67 AND k.rep_year=$rep_year) as  'p67'
-
-FROM topic_all t
-WHERE t.kpi_group='moph'";
+        $sql = "select c.provcode,c.provname,
+(select sum(k.sumcase) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as sum_case,
+(select round(sum(k.sumadjrw),2) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as sum_adjrw,
+(select round(avg(k.refcmi),2) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as avg_cmi
+from cchangwat c";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw
