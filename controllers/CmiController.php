@@ -13,11 +13,10 @@ class CmiController extends \yii\web\Controller {
     }
 
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
-        $sql = "select c.provcode,c.provname,
-(select sum(k.sumcase) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as sum_case,
-(select round(sum(k.sumadjrw),2) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as sum_adjrw,
-(select round(avg(k.refcmi),2) from kpi_cmi k where k.provcode=c.provcode and k.rep_year=$rep_year) as avg_cmi
-from cchangwat c";
+        $sql = "SELECT k.rep_year,k.provcode,c2.provname,c.hospname,k.sumcase,k.sumadjrw,k.refcmi
+FROM kpi_cmi k,chos c,cchangwat c2
+where k.hospcode=c.hospcode and k.provcode=c2.provcode and k.rep_year=2015
+ORDER BY k.provcode";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
             'allModels' => $raw

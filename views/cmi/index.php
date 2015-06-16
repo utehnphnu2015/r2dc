@@ -48,16 +48,20 @@ $this->params['breadcrumbs'][] = 'ตัวชี้วัด CMI';
                     'label' => 'จังหวัด'
                 ],
                 [
-                    'attribute' => 'sum_case',
+                    'attribute' => 'hospname',
+                    'label' => 'สถานบริการ'
+                ],
+                [
+                    'attribute' => 'sumcase',
                     'label' => 'จำนวนผู้ป่วย'
                 ],
                 [
-                    'attribute' => 'sum_adjrw',
+                    'attribute' => 'sumadjrw',
                     'label' => 'รวม Adjrw'
                 ],
                 [
-                    'attribute' => 'avg_cmi',
-                    'label' => 'ค่าเฉลี่ย CMI'
+                    'attribute' => 'refcmi',
+                    'label' => 'CMI'
                 ],
                 ]
                 
