@@ -15,7 +15,7 @@ class CmiController extends \yii\web\Controller {
     public function actionIndex($rep_year = 2015) {// แสดงทุกรายการ kpi เขต
         $sql = "SELECT k.rep_year,k.provcode,c2.provname,c.hospname,k.sumcase,k.sumadjrw,k.refcmi
 FROM kpi_cmi k,chos c,cchangwat c2
-where k.hospcode=c.hospcode and k.provcode=c2.provcode and k.rep_year=2015
+where k.hospcode=c.hospcode and k.provcode=c2.provcode and k.rep_year=$rep_year
 ORDER BY k.provcode";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
