@@ -21,7 +21,7 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
     </p>
 
     <?=
-    GridView::widget([
+\fedemotta\datatables\DataTables::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
@@ -53,20 +53,9 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                 'attribute' => 'total',
                 'label' => 'ผลงาน'
             ],
-            // 'mon1',
-            // 'mon2',
-            // 'mon3',
-            // 'mon4',
-            // 'mon5',
-            // 'mon6',
-            // 'mon7',
-            // 'mon8',
-            // 'mon9',
-            // 'mon10',
-            // 'mon11',
-            // 'mon12',
-            // 'ratio',
-            ['class' => 'yii\grid\ActionColumn'],
+            
+             'ratio',
+           
         ],
     ]);
     ?>

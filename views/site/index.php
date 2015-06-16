@@ -62,7 +62,7 @@ $qof = $command->queryScalar();
             <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>0</h3>
-                    <p>ตัวชีวัด CMI</p>
+                    <p>CMI</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-ios-book-outline"></i>
