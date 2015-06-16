@@ -16,7 +16,8 @@ class CmiController extends \yii\web\Controller {
         $sql = "SELECT * from tmp_kpi_cmi ";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $raw
+            'allModels' => $raw,
+            'pagination'=>FALSE
         ]);
 
         return $this->render('index', [
