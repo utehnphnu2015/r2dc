@@ -61,7 +61,7 @@ $qof = $command->queryScalar();
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>0</h3>
+                    <h3>47</h3>
                     <p>CMI</p>
                 </div>
                 <div class="icon">

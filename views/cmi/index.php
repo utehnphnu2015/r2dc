@@ -7,7 +7,7 @@ use fedemotta\datatables\DataTables;
 
 //$this->params['breadcrumbs'][] = ['label' => 'หน้าหลัก', 'url' => ['site/index']];
 
-$this->params['breadcrumbs'][] = 'ตัวชี้วัด CMI';
+$this->params['breadcrumbs'][] = 'CMI';
 ?>
 <!-- Default box -->
 <div class="box">
