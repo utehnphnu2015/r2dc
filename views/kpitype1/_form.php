@@ -68,6 +68,10 @@ use yii\helpers\Url;
         <div class="col-md-4">
             <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
         </div>
+        
+        <div class="col-md-4">
+            <?= $form->field($model, 'total')->textInput(['value' => 0]) ?>
+        </div>
     </div>
 
     <div class="row">

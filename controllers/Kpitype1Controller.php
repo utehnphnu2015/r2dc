@@ -50,7 +50,10 @@ class Kpitype1Controller extends Controller {
      */
     public function actionView($kpi_id, $rep_year, $hospcode) {
         return $this->render('view', [
-                    'model' => $this->findModel($kpi_id, $rep_year, $hospcode),
+                    'model' => $model,
+                    'kpi_id'=>$kpi_id,
+                    'rep_year'=>$rep_year,
+                    'hospcode'=>$hospcode
         ]);
     }
 

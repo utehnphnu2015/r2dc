@@ -66,7 +66,7 @@ class KpiType1 extends \yii\db\ActiveRecord
             'provcode' => 'จังหวัด',
             'ampcode' => 'อำเภอ',
             'target' => 'เป้าหมาย',
-            'total' => 'Total',
+            'total' => 'ผลงาน',
             'mon1' => 'ต.ค',
             'mon2' => 'พ.ย',
             'mon3' => 'ธ.ค',

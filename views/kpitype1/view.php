@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType1 */
 
-$this->title = $model->kpi_id;
-$this->params['breadcrumbs'][] = ['label' => 'Kpi Type1s', 'url' => ['index']];
+$this->title = $kpi_id;
+$this->params['breadcrumbs'][] = ['label' => 'กลับ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kpi-type1-view">
@@ -15,9 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'hospcode' => $hospcode], ['class' => 'btn btn-primary']) ?>
         <?=
-        Html::a('Delete', ['delete', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode], [
+        Html::a('Delete', ['delete', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year, 'hospcode' => $hospcode], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',

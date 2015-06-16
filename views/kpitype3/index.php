@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>
-        <?= Html::a('เพิ่มข้อมูล Kpi ระดับจังหวัด', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มข้อมูล', ['create','kpi_id'=>$kpi_id,'rep_year'=>$rep_year], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?=

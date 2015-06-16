@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'rep_year' => $rep_year,
+        'kpi_id' => $kpi_id
     ]) ?>
 
 </div>
