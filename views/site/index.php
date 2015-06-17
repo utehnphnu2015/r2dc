@@ -80,39 +80,46 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                         </p>
                         <div class="chart">
                             <!-- Sales Chart Canvas -->
-                            <canvas id="salesChart" height="180"></canvas>
+                            <canvas id="salesChart" height="240"></canvas>
                         </div><!-- /.chart-responsive -->
                     </div><!-- /.col -->
                     <div class="col-md-4">
                         <p class="text-center">
-                            <strong>Goal Completion</strong>
+                            <strong>อัตราครองเตียง</strong>
                         </p>
                         <div class="progress-group">
-                            <span class="progress-text">Add Products to Cart</span>
-                            <span class="progress-number"><b>160</b>/200</span>
+                            <span class="progress-text">พิษณุโลก</span>
+                            <span class="progress-number"><b>80</b>%</span>
                             <div class="progress sm">
                                 <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
-                            <span class="progress-text">Complete Purchase</span>
-                            <span class="progress-number"><b>310</b>/400</span>
+                            <span class="progress-text">อุตรดิตถ์</span>
+                            <span class="progress-number"><b>64</b>%</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-red" style="width: 64%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
-                            <span class="progress-text">Visit Premium Page</span>
-                            <span class="progress-number"><b>480</b>/800</span>
+                            <span class="progress-text">เพชรบูรณ์</span>
+                            <span class="progress-number"><b>78</b>%</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-green" style="width: 78%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                         <div class="progress-group">
-                            <span class="progress-text">Send Inquiries</span>
-                            <span class="progress-number"><b>250</b>/500</span>
+                            <span class="progress-text">สุโขทัย</span>
+                            <span class="progress-number"><b>54</b>%</span>
                             <div class="progress sm">
-                                <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                                <div class="progress-bar progress-bar-yellow" style="width: 54%"></div>
+                            </div>
+                        </div><!-- /.progress-group -->
+                         <div class="progress-group">
+                            <span class="progress-text">ตาก</span>
+                            <span class="progress-number"><b>67</b>%</span>
+                            <div class="progress sm">
+                                <div class="progress-bar progress-bar-yellow" style="width: 67%"></div>
                             </div>
                         </div><!-- /.progress-group -->
                     </div><!-- /.col -->
@@ -123,29 +130,29 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                     <div class="col-sm-3 col-xs-6">
                         <div class="description-block border-right">
                             <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                            <h5 class="description-header">$35,210.43</h5>
-                            <span class="description-text">TOTAL REVENUE</span>
+                            <h5 class="description-header">35,210</h5>
+                            <span class="description-text">ทางเดินหายใจ</span>
                         </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-3 col-xs-6">
                         <div class="description-block border-right">
                             <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                            <h5 class="description-header">$10,390.90</h5>
-                            <span class="description-text">TOTAL COST</span>
+                            <h5 class="description-header">10,390</h5>
+                            <span class="description-text">ทางเดินอาหาร</span>
                         </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-3 col-xs-6">
                         <div class="description-block border-right">
                             <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                            <h5 class="description-header">$24,813.53</h5>
-                            <span class="description-text">TOTAL PROFIT</span>
+                            <h5 class="description-header">24,813</h5>
+                            <span class="description-text">หัวใจและหลอดเลือก</span>
                         </div><!-- /.description-block -->
                     </div><!-- /.col -->
                     <div class="col-sm-3 col-xs-6">
                         <div class="description-block">
                             <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                             <h5 class="description-header">1200</h5>
-                            <span class="description-text">GOAL COMPLETIONS</span>
+                            <span class="description-text">กล้ามเนื้อและกระดูก</span>
                         </div><!-- /.description-block -->
                     </div>
                 </div><!-- /.row -->
