@@ -3,7 +3,7 @@
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
-use app\models\TopicMoph;
+use app\models\TopicAll;
 ?>
 
 <?php
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = 'รายสถานบริการ';
             ตัวชี้วัดกระทรวง
             <span style="color: #0000cc">
                 <?php
-                $topic = TopicMoph::find()->where(['id' => $kpi_id])->asArray()->one();
+                $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
                 ?>
             </span>
