@@ -31,9 +31,9 @@ class Kpitype3Controller extends Controller {
      * Lists all KpiType3 models.
      * @return mixed
      */
-    public function actionIndex($rep_year = null, $kpi_id = null) {
+    public function actionIndex( $kpi_id = null,$rep_year = null) {
         $dataProvider = new ActiveDataProvider([
-            'query' => KpiType3::find()->where(['kpi_id' => $kpi_id]),
+            'query' => KpiType3::find()->where(['kpi_id' => $kpi_id,'rep_year'=>$rep_year]),
         ]);
 
         return $this->render('index', [
@@ -111,7 +111,7 @@ class Kpitype3Controller extends Controller {
         $this->findModel($kpi_id, $rep_year,$provcode)->delete();
 
         //return $this->redirect(['index']);
-        return $this->redirect(['index', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]);
+        return $this->redirect(['index',  'kpi_id' => $kpi_id,'rep_year' => $rep_year,]);
     }
 
     /**
