@@ -56,7 +56,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Monthly Recap Report</h3>
+                <h3 class="box-title">ผู้ป่วยนอก</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <div class="btn-group">
@@ -76,7 +76,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                 <div class="row">
                     <div class="col-md-8">
                         <p class="text-center">
-                            <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                            <strong>OP: ปี 2558</strong>
                         </p>
                         <div class="chart">
                             <!-- Sales Chart Canvas -->
