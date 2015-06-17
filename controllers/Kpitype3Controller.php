@@ -14,7 +14,8 @@ use yii\filters\VerbFilter;
  */
 class Kpitype3Controller extends Controller {
 
-     public $enableCsrfValidation = false;
+    public $enableCsrfValidation = false;
+
     public function behaviors() {
         return [
             'verbs' => [
@@ -50,6 +51,7 @@ class Kpitype3Controller extends Controller {
      */
     public function actionView($kpi_id, $rep_year, $provcode) {
         return $this->render('view', [
+                    'model' => $this->findModel($kpi_id, $rep_year, $provcode),
                     'kpi_id' => $kpi_id,
                     'rep_year' => $rep_year,
                     'provcode' => $provcode
@@ -61,7 +63,7 @@ class Kpitype3Controller extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($rep_year = null, $kpi_id = null,$provcode=null) {
+    public function actionCreate($rep_year = null, $kpi_id = null, $provcode = null) {
         $model = new KpiType3();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -83,14 +85,17 @@ class Kpitype3Controller extends Controller {
      * @param string $rep_year
      * @return mixed
      */
-    public function actionUpdate($kpi_id, $rep_year) {
-        $model = $this->findModel($kpi_id, $rep_year);
+    public function actionUpdate($kpi_id, $rep_year,$provcode) {
+        $model = $this->findModel($kpi_id, $rep_year,$provcode);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
+            return $this->redirect(['index', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
         } else {
             return $this->render('update', [
                         'model' => $model,
+                        'rep_year' => $rep_year,
+                        'kpi_id' => $kpi_id,
+                        'provcode' => $provcode
             ]);
         }
     }
@@ -102,8 +107,8 @@ class Kpitype3Controller extends Controller {
      * @param string $rep_year
      * @return mixed
      */
-    public function actionDelete($kpi_id, $rep_year) {
-        $this->findModel($kpi_id, $rep_year)->delete();
+    public function actionDelete($kpi_id, $rep_year,$provcode) {
+        $this->findModel($kpi_id, $rep_year,$provcode)->delete();
 
         return $this->redirect(['index']);
     }
@@ -116,8 +121,8 @@ class Kpitype3Controller extends Controller {
      * @return KpiType3 the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($kpi_id, $rep_year) {
-        if (($model = KpiType3::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year])) !== null) {
+    protected function findModel($kpi_id, $rep_year,$provcode) {
+        if (($model = KpiType3::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year,'provcode'=>$provcode])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

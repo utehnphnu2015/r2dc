@@ -33,6 +33,7 @@ class Kpitype1Controller extends Controller {
     public function actionIndex($rep_year = null, $kpi_id = null) {
         $dataProvider = new ActiveDataProvider([
             'query' => KpiType1::find()->where(['kpi_id' => $kpi_id]),
+            
         ]);
 
         return $this->render('index', [

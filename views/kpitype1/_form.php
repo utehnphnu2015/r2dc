@@ -66,7 +66,7 @@ use yii\helpers\Url;
             ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'target')->textInput(['value' => 0]) ?>
+            <?= $form->field($model, 'target')->textInput() ?>
         </div>
         
         

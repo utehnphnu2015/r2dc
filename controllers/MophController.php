@@ -24,7 +24,8 @@ FROM topic_all t
 WHERE t.kpi_group='moph'";
         $raw = $this->queryAll($sql);
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $raw
+            'allModels' => $raw,
+            'pagination'=>FALSE
         ]);
 
         return $this->render('index', [
