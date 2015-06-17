@@ -2,16 +2,18 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\TopicAll;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 
-$this->title = 'Kpi ระดับจังหวัด';
+$this->title = $kpi_id."-".$topic['topic'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kpi-type3-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?= Html::encode($this->title) ?></h4>
 
     <p>
         <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>

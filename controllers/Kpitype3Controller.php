@@ -110,7 +110,8 @@ class Kpitype3Controller extends Controller {
     public function actionDelete($kpi_id, $rep_year,$provcode) {
         $this->findModel($kpi_id, $rep_year,$provcode)->delete();
 
-        return $this->redirect(['index']);
+        //return $this->redirect(['index']);
+        return $this->redirect(['index', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year]);
     }
 
     /**
