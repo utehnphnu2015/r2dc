@@ -22,8 +22,9 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
     </p>
 
     <?=
-    \fedemotta\datatables\DataTables::widget([
+    GridView::widget([
         'dataProvider' => $dataProvider,
+         'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
