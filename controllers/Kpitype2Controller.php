@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class Kpitype2Controller extends Controller {
 
+     public $enableCsrfValidation = false;
     public function behaviors() {
         return [
             'verbs' => [
