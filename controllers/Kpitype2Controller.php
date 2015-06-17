@@ -14,7 +14,8 @@ use yii\filters\VerbFilter;
  */
 class Kpitype2Controller extends Controller {
 
-     public $enableCsrfValidation = false;
+    public $enableCsrfValidation = false;
+
     public function behaviors() {
         return [
             'verbs' => [
@@ -48,9 +49,9 @@ class Kpitype2Controller extends Controller {
      * @param string $rep_year
      * @return mixed
      */
-    public function actionView($kpi_id, $rep_year) {
+    public function actionView($kpi_id, $rep_year, $provcode, $ampcode) {
         return $this->render('view', [
-                    'model' => $this->findModel($kpi_id, $rep_year),
+                    'model' => $this->findModel($kpi_id, $rep_year, $provcode, $ampcode),
         ]);
     }
 
@@ -80,14 +81,18 @@ class Kpitype2Controller extends Controller {
      * @param string $rep_year
      * @return mixed
      */
-    public function actionUpdate($kpi_id, $rep_year) {
-        $model = $this->findModel($kpi_id, $rep_year);
+    public function actionUpdate($kpi_id, $rep_year, $provcode, $ampcode) {
+        $model = $this->findModel($kpi_id, $rep_year, $provcode, $ampcode);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
         } else {
             return $this->render('update', [
                         'model' => $model,
+                        'kpi_id' => $kpi_id,
+                        'rep_year' => $rep_year,
+                        'provcode' => $provcode,
+                        'ampcode' => $ampcode
             ]);
         }
     }
@@ -99,10 +104,10 @@ class Kpitype2Controller extends Controller {
      * @param string $rep_year
      * @return mixed
      */
-    public function actionDelete($kpi_id, $rep_year) {
-        $this->findModel($kpi_id, $rep_year)->delete();
+    public function actionDelete($kpi_id, $rep_year, $provcode, $ampcode) {
+        $this->findModel($kpi_id, $rep_year, $provcode, $ampcode)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index','kpi_id' => $kpi_id,'rep_year' => $rep_year,]);
     }
 
     /**
@@ -113,8 +118,13 @@ class Kpitype2Controller extends Controller {
      * @return KpiType2 the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($kpi_id, $rep_year) {
-        if (($model = KpiType2::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year])) !== null) {
+    protected function findModel($kpi_id, $rep_year, $provcode, $ampcode) {
+        if (($model = KpiType2::findOne([
+                    'kpi_id' => $kpi_id,
+                    'rep_year' => $rep_year,
+                    'provcode' => $provcode,
+                    'ampcode' => $ampcode
+                ])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
