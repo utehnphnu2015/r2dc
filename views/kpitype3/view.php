@@ -2,17 +2,20 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\TopicAll;
+
+ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType3 */
 
 $this->title = $model->kpi_id;
-$this->params['breadcrumbs'][] = ['label' => 'Kpi Type3s', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = ['label' => 'กลับ', 'url' => ['index','kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]];
+
 ?>
 <div class="kpi-type3-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?=$kpi_id."-".$topic['topic']?></h4>
 
     <p>
         <?= Html::a('Update', ['update', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year,'provcode'=>$model->provcode], ['class' => 'btn btn-primary']) ?>

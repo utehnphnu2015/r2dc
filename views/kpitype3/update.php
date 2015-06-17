@@ -2,17 +2,21 @@
 
 use yii\helpers\Html;
 
+use app\models\TopicAll;
+
+ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType3 */
 
-$this->title = 'Update Kpi Type3: ' . ' ' . $model->kpi_id;
-$this->params['breadcrumbs'][] = ['label' => 'Kpi Type3s', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->kpi_id, 'url' => ['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]];
-$this->params['breadcrumbs'][] = 'Update';
+
+$this->params['breadcrumbs'][] = ['label' => 'กลับ', 'url' => ['index','kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]];
+
 ?>
 <div class="kpi-type3-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h4><?=$kpi_id."-".$topic['topic']?></h4>
 
     <?=
     $this->render('_form', [
