@@ -5,21 +5,26 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
 ?>
 <!-- Info boxes -->
 <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
+    <?php
+    $url_moph = Yii::$app->urlManager->createUrl(['moph/index']);
+    ?>
+    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="location.href='<?=$url_moph?>'">
+        
         <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">CPU Traffic</span>
-                <span class="info-box-number">90<small>%</small></span>
+                <span class="info-box-text">ตัวชี้วัดกระทรวง</span>
+                <span class="info-box-number">22</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
+       
     </div><!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-building-o"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-text">ตัวชี้วัดเขต</span>
+               <span class="info-box-number">7</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
@@ -31,8 +36,8 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">QOF</span>
+               <span class="info-box-number">13</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
@@ -40,8 +45,8 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
         <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
             <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-text">CMI</span>
+                <span class="info-box-number">47</span>
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
