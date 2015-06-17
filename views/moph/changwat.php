@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
 ?>
 <!-- Default box -->
 <?php
-    $sql="SELECT * FROM topic_all WHERE kpi_group='moph' AND id='$kpi_id' AND resource='INPUT'";
+    //$sql="SELECT * FROM topic_all WHERE kpi_group='moph' AND id='$kpi_id' AND resource='INPUT'";
 ?>
 
 
