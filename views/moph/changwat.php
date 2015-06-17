@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
 ?>
 <!-- Default box -->
 <?php
-    //$sql="SELECT * FROM topic_all WHERE kpi_group='moph' AND id='$kpi_id' AND resource='INPUT'";
+//$sql="SELECT * FROM topic_all WHERE kpi_group='moph' AND id='$kpi_id' AND resource='INPUT'";
 ?>
 
 
@@ -47,26 +47,26 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                         <i class="fa fa-undo"></i>
                     </a> 
                 </div>
-                <?php if($topic['resource']=='INPUT'){ ?>
-                <div class="col-md-4">
-                    <a class="btn btn-flat btn-success"
-                         <?php if($topic['table_type']=='1'){ ?>
-                            href="<?= Url::to(['kpitype1/index', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
-                         <?php }else if($topic['table_type']=='2'){ ?>
-                            href="<?= Url::to(['kpitype2/index', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
-                         <?php }else{ ?>
-                            href="<?= Url::to(['kpitype3/index', 'rep_year' => $rep_year,'kpi_id'=>$kpi_id]) ?>">
-                         <?php }?>
-                        <i class="fa fa-plus-square"></i>
-                    </a> 
-                </div>
+                <?php if ($topic['resource'] == 'INPUT') { ?>
+                    <div class="col-md-4">
+                        <a class="btn btn-flat btn-success"
+                        <?php if ($topic['table_type'] == '1') { ?>
+                               href="<?= Url::to(['kpitype1/index', 'rep_year' => $rep_year, 'kpi_id' => $kpi_id]) ?>">
+                               <?php } else if ($topic['table_type'] == '2') { ?>
+                                href="<?= Url::to(['kpitype2/index', 'rep_year' => $rep_year, 'kpi_id' => $kpi_id]) ?>">
+                            <?php } else { ?>
+                                href="<?= Url::to(['kpitype3/index', 'rep_year' => $rep_year, 'kpi_id' => $kpi_id]) ?>">
+                            <?php } ?>
+                            <i class="fa fa-plus-square"></i>
+                        </a> 
+                    </div>
                 <?php } ?>
             </div>
 
             <div class="pull-right">
-                    <h4>
-                        <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
-                    </h4>
+                <h4>
+                    <span style="background-color:#00A2E8; color: white;padding: 5px">ปีงบประมาณ <?= $rep_year + 543 ?></span>
+                </h4>
             </div>
         </div>
         <hr style="color: white;line-height: 0px;border-color: white">
