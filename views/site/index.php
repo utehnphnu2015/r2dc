@@ -62,17 +62,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                 <h3 class="box-title">ผู้ป่วยนอก</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <div class="btn-group">
-                        <button class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body">
@@ -171,10 +161,10 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
         <!-- MAP & BOX PANE -->
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Visitors Report</h3>
+                <h3 class="box-title">ที่ตั้งหน่วยบริการ</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body no-padding">
@@ -190,17 +180,17 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                             <div class="description-block margin-bottom">
                                 <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
                                 <h5 class="description-header">8390</h5>
-                                <span class="description-text">Visits</span>
+                                <span class="description-text">OP</span>
                             </div><!-- /.description-block -->
                             <div class="description-block margin-bottom">
                                 <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
                                 <h5 class="description-header">30%</h5>
-                                <span class="description-text">Referrals</span>
+                                <span class="description-text">PP</span>
                             </div><!-- /.description-block -->
                             <div class="description-block">
                                 <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
                                 <h5 class="description-header">70%</h5>
-                                <span class="description-text">Organic</span>
+                                <span class="description-text">IP</span>
                             </div><!-- /.description-block -->
                         </div>
                     </div><!-- /.col -->
@@ -212,7 +202,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
         <!-- TABLE: LATEST ORDERS -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Latest Orders</h3>
+                <h3 class="box-title">Latest Sync</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -340,7 +330,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
 
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Browser Usage</h3>
+                <h3 class="box-title">อัตรา</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -367,9 +357,11 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
             </div><!-- /.box-body -->
             <div class="box-footer no-padding">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#">United States of America <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
-                    <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a></li>
-                    <li><a href="#">China <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
+                    <li><a href="#">พิษณุโลก<span class="pull-right text-red">12%</span></a></li>
+                    <li><a href="#">เพชรบูรณ์<span class="pull-right text-green">4%</span></a></li>
+                    <li><a href="#">สุโขทัย<span class="pull-right text-yellow">0%</span></a></li>
+                    <li><a href="#">อุตรดิตถ์<span class="pull-right text-yellow">0%</span></a></li>
+                    <li><a href="#">ตาก<span class="pull-right text-yellow">0%</span></a></li>
                 </ul>
             </div><!-- /.footer -->
         </div><!-- /.box -->
