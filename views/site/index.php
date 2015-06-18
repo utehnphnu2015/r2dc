@@ -11,7 +11,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
     $url3 = Yii::$app->urlManager->createUrl(['qof/index']);
     $url4 = Yii::$app->urlManager->createUrl(['cmi/index']);
     ?>
-    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="location.href='<?=$url1?>'">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url1?>'">
         
         <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
@@ -22,7 +22,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
         </div><!-- /.info-box -->
        
     </div><!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="location.href='<?=$url2?>'">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url2?>'">
         <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-building-o"></i></span>
             <div class="info-box-content">
@@ -35,7 +35,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
     <!-- fix for small devices only -->
     <div class="clearfix visible-sm-block"></div>
 
-    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="location.href='<?=$url3?>'">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url3?>'">
         <div class="info-box">
             <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
             <div class="info-box-content">
@@ -44,7 +44,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="location.href='<?=$url4?>'">
+    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url4?>'">
         <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
             <div class="info-box-content">
@@ -345,12 +345,12 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
                     </div><!-- /.col -->
                     <div class="col-md-4">
                         <ul class="chart-legend clearfix">
-                            <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                            <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                            <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                            <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                            <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                            <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                            <li><i class="fa fa-circle-o text-red"></i> มะเร็ง</li>
+                            <li><i class="fa fa-circle-o text-green"></i> หัวใจ</li>
+                            <li><i class="fa fa-circle-o text-yellow"></i> เบาหวาน</li>
+                            <li><i class="fa fa-circle-o text-aqua"></i> ความดัน</li>
+                            <li><i class="fa fa-circle-o text-light-blue"></i> TB</li>
+                            
                         </ul>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
