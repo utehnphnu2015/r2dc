@@ -8,7 +8,7 @@ use app\models\TopicAll;
 /* @var $dataProvider yii\data\ActiveDataProvider */
  $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 
-$this->title = $kpi_id."-".$topic['topic'];
+$this->title = "KPI ระดับจังหวัด";
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kpi-type3-index">

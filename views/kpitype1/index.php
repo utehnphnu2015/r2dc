@@ -7,7 +7,7 @@ use app\models\TopicAll;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kpi ระดับสถานบริการ';
+$this->title = 'KPI ระดับสถานบริการ';
 $this->params['breadcrumbs'][] = $this->title;
 
 $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
