@@ -7,6 +7,8 @@ use app\models\Campur;
 use app\models\Ctambon;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
+use app\models\Chospital2;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\KpiType1 */
@@ -45,7 +47,9 @@ use yii\helpers\Url;
         <div class="col-md-4">
 
             <?php
-            echo $form->field($model, 'ampcode')->dropDownList([], [
+            $list = ArrayHelper::map(Campur::find()->where(['provcode'=>$model->provcode,'ampcode'=>$model->ampcode])->all(),'ampcode','ampname');
+            
+            echo $form->field($model, 'ampcode')->dropDownList($list, [
                 'id' => 'dlAmp',
                 'prompt' => '--อำเภอ--'
                     ]
@@ -58,7 +62,9 @@ use yii\helpers\Url;
     <div class="row">
         <div class="col-md-4">
               <?php
-            echo $form->field($model, 'hospcode')->dropDownList([], [
+              $list = ArrayHelper::map(Chospital2::find()->where(['hospcode'=>$model->hospcode])->all(),'hospcode','hosname');
+            
+            echo $form->field($model, 'hospcode')->dropDownList($list, [
                 'id' => 'dlHos',
                 'prompt' => '--หน่วยงาน--'
                     ]

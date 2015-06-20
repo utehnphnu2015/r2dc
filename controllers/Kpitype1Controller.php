@@ -75,6 +75,23 @@ class Kpitype1Controller extends Controller {
      * @return mixed
      */
     public function actionCreate($rep_year = null, $kpi_id = null) {
+        
+         $request = Yii::$app->request;
+        if($request->isPost){
+            
+            $data = $request->post('KpiType1');
+            $kpi_id = $data['kpi_id']; 
+              
+            $hospcode = $data['hospcode'];    
+                     
+            $model = KpiType1::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year,'hospcode'=>$hospcode]);
+            if($model !== null){
+               return $this->redirect(['update', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year,'hospcode'=>$hospcode]);
+            }
+        }
+        
+        
+        
         $model = new KpiType1();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
