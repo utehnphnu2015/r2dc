@@ -63,5 +63,5 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
     ?>
 
 </div>
-<i class="glyphicon glyphicon-trash"></i>
+
 
