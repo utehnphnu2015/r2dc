@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?=
-    GridView::widget([
+    \fedemotta\datatables\DataTables::widget([
         'dataProvider' => $dataProvider,
          'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => '0'],
         'columns' => [
