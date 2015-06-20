@@ -61,10 +61,27 @@ class Kpitype2Controller extends Controller {
      * @return mixed
      */
     public function actionCreate($rep_year = null, $kpi_id = null) {
+        $request = Yii::$app->request;
+        if($request->isPost){
+            
+            $data = $request->post('KpiType2');
+            $kpi_id = $data['kpi_id']; 
+            $rep_year = $data['rep_year']; 
+            $provcode = $data['provcode'];  
+            $ampcode = $data['ampcode'];    
+                     
+            $model = KpiType2::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year,'provcode'=>$provcode,'ampcode'=>$ampcode]);
+            if($model !== null){
+               return $this->redirect(['update', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year,'provcode'=>$provcode,'ampcode'=>$ampcode]);
+            }
+        }
+        
+        
+        
         $model = new KpiType2();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
+            return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year,'provcode'=>$provcode,'ampcode'=>$ampcode]);
         } else {
             return $this->render('create', [
                         'model' => $model,
@@ -85,7 +102,7 @@ class Kpitype2Controller extends Controller {
         $model = $this->findModel($kpi_id, $rep_year, $provcode, $ampcode);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
+            return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year,'provcode'=>$model->provcode,'ampcode'=>$model->ampcode]);
         } else {
             return $this->render('update', [
                         'model' => $model,

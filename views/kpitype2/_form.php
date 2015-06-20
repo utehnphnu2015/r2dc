@@ -45,7 +45,8 @@ use yii\helpers\Url;
         <div class="col-md-4">
 
             <?php
-            echo $form->field($model, 'ampcode')->dropDownList([], [
+            $list = ArrayHelper::map(Campur::find()->where(['provcode'=>$model->provcode,'ampcode'=>$model->ampcode])->all(),'ampcode','ampname');
+            echo $form->field($model, 'ampcode')->dropDownList($list, [
                 'id' => 'dlAmp',
                 'prompt' => '--อำเภอ--'
                     ]

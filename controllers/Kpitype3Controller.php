@@ -63,7 +63,22 @@ class Kpitype3Controller extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($rep_year = null, $kpi_id = null, $provcode = null) {
+    public function actionCreate($kpi_id = null,$rep_year = null,  $provcode = null) {
+        $request = Yii::$app->request;
+        if($request->isPost){
+            
+            $data = $request->post('KpiType3');
+            $kpi_id = $data['kpi_id']; 
+            $rep_year = $data['rep_year']; 
+            $provcode = $data['provcode'];    
+                     
+            $model = KpiType3::findOne(['kpi_id' => $kpi_id, 'rep_year' => $rep_year,'provcode'=>$provcode]);
+            if($model !== null){
+               return $this->redirect(['update', 'kpi_id' => $kpi_id, 'rep_year' => $rep_year,'provcode'=>$provcode]);
+            }
+        }
+        
+        
         $model = new KpiType3();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
