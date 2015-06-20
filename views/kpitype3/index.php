@@ -6,18 +6,22 @@ use app\models\TopicAll;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
- $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
+
 
 $this->title = "KPI ระดับจังหวัด";
 $this->params['breadcrumbs'][] = $this->title;
+ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 ?>
 <div class="kpi-type3-index">
 
-    <h4><?= Html::encode($this->title) ?></h4>
+      <h4><?= Html::encode("ตัวชี้วัด : " . $kpi_id . "-" . $topic['topic']) ?></h4>
+      <?php
+        $feq= $topic['frequency'];
+      ?>
 
     <p>
         <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>
-        <?= Html::a('เพิ่มข้อมูล', ['create','kpi_id'=>$kpi_id,'rep_year'=>$rep_year], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มข้อมูล', ['create','kpi_id'=>$kpi_id,'rep_year'=>$rep_year,'feq'=>$feq], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?=

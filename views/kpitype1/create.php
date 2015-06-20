@@ -19,6 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h3 class="box-title"><i class="glyphicon glyphicon-plus-sign"></i> 
             <?= Html::encode("ตัวชี้วัด : ".$kpi_id."-".$topic['topic']) ?>
         </h3>
+        
         <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fa fa-minus"></i>
@@ -27,6 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
         
     </div>
     <div class="box-body">
+        <div class="alert alert-info">
+            <h4>
+              <?php
+            if($feq==='year'){
+                echo "เก็บข้อมูลปีละครั้ง  ให้กรอกเฉพาะช่องเดือน กันยายน";
+            }
+            if($feq==='mon'){
+                echo "เก็บข้อมูลเดือนละครั้ง";
+            }
+            ?>
+            </h4>
+        </div>
         <!--เริ่ม content-->
 
     <?= $this->render('_form', [

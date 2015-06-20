@@ -2,20 +2,27 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\TopicAll;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'KPI ระดับอำเภอ';
 $this->params['breadcrumbs'][] = $this->title;
+$topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 ?>
 <div class="kpi-type2-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+      <h4><?= Html::encode("ตัวชี้วัด : " . $kpi_id . "-" . $topic['topic']) ?></h4>
+      
+      <?php
+        $feq= $topic['frequency'];
+      ?>
+      
 
     <p>
         <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>
-        <?= Html::a('เพิ่มข้อมูล', ['create','rep_year'=>$rep_year,'kpi_id'=>$kpi_id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('เพิ่มข้อมูล', ['create','rep_year'=>$rep_year,'kpi_id'=>$kpi_id,'feq'=>$feq], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?=

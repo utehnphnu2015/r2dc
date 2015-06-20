@@ -63,7 +63,7 @@ class Kpitype3Controller extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($kpi_id = null,$rep_year = null,  $provcode = null) {
+    public function actionCreate($kpi_id = null,$rep_year = null,  $provcode = null,$feq=null) {
         $request = Yii::$app->request;
         if($request->isPost){
             
@@ -88,7 +88,8 @@ class Kpitype3Controller extends Controller {
                         'model' => $model,
                         'rep_year' => $rep_year,
                         'kpi_id' => $kpi_id,
-                        'provcode' => $provcode
+                        'provcode' => $provcode,
+                        'feq'=>$feq
             ]);
         }
     }

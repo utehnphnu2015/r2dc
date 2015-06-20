@@ -9,16 +9,17 @@ use app\models\TopicAll;
 
 $this->title = 'KPI ระดับสถานบริการ';
 $this->params['breadcrumbs'][] = $this->title;
-
 $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 ?>
 <div class="kpi-type1-index">
 
     <h4><?= Html::encode("ตัวชี้วัด : " . $kpi_id . "-" . $topic['topic']) ?></h4>
-
+   <?php
+        $feq= $topic['frequency'];
+      ?>
     <p>
         <?= Html::a('<i class="fa fa-undo"></i>', ['moph/index'], ['class' => 'btn btn-flat btn-warning']) ?>
-        <?= Html::a('เพิ่มข้อมูล', ['create', 'rep_year' => $rep_year, 'kpi_id' => $kpi_id], ['class' => 'btn btn-success', ['rep_year' => '2333']]) ?>
+        <?= Html::a('เพิ่มข้อมูล', ['create', 'rep_year' => $rep_year, 'kpi_id' => $kpi_id,'feq'=>$feq], ['class' => 'btn btn-success', ['rep_year' => '2333']]) ?>
     </p>
 
     <?=
