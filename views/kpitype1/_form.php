@@ -72,7 +72,7 @@ use app\models\Chospital2;
             ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'target')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'target')->textInput() ?>
         </div>
         
         
@@ -80,48 +80,48 @@ use app\models\Chospital2;
 
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'mon1')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon1')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon2')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon2')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon3')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon3')->textInput() ?>
         </div>        
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'mon4')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon4')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon5')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon5')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon6')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon6')->textInput() ?>
         </div>        
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'mon7')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon7')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon8')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon8')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon9')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon9')->textInput() ?>
         </div>        
     </div>
     <div class="row">
         <div class="col-md-4">
-            <?= $form->field($model, 'mon10')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon10')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon11')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon11')->textInput() ?>
         </div>
         <div class="col-md-4">
-            <?= $form->field($model, 'mon12')->textInput(['value'=>0]) ?>
+            <?= $form->field($model, 'mon12')->textInput() ?>
         </div>        
     </div>
 
