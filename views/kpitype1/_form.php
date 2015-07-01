@@ -77,7 +77,9 @@ use app\models\Chospital2;
         
         
     </div>
-
+    
+    <h4><span style="color: white;background-color:orangered">บันทึกผลงาน</span></h4>
+    
     <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'mon1')->textInput() ?>
