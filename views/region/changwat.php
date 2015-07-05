@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                 <?php
                 $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
+                 $tb_type= $topic['table_type'];
                 ?>
             </span>
         </h3>
@@ -85,7 +86,7 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                         'attribute' => 'provname',
                         'label' => 'จังหวัด',
                         'format' => 'raw',
-                        'value' => function($data) use ($kpi_id, $rep_year) {
+                        'value' => function($data) use ($kpi_id, $rep_year,$tb_type) {
                             $params = [
                                 'moph/ampur', // action
                                 'kpi_id' => $kpi_id,
@@ -93,7 +94,11 @@ $this->params['breadcrumbs'][] = 'รายจังหวัด';
                                 'provcode' => $data['provcode']
                             ];
 
-                            return Html::a($data['provname'], $params);
+                            if($tb_type<3){
+                                return Html::a($data['provname'], $params);
+                            }else{
+                                return $data['provname'];
+                            }
                         }
                             ],
                             [

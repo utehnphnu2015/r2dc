@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = 'รายอำเภอ';
                 <?php
                 $topic = TopicRegion::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
+                 $tb_type= $topic['table_type'];
                 ?>
             </span>
         </h3>
@@ -63,7 +64,7 @@ $this->params['breadcrumbs'][] = 'รายอำเภอ';
                         'attribute' => 'ampname',
                         'label' => 'อำเภอ',
                         'format' => 'raw',
-                        'value' => function($data) use ($kpi_id, $rep_year, $provcode) {
+                        'value' => function($data) use ($kpi_id, $rep_year, $provcode,$tb_type) {
                             $params = [
                                 'region/hospital', // action
                                 'kpi_id' => $kpi_id,
@@ -72,7 +73,12 @@ $this->params['breadcrumbs'][] = 'รายอำเภอ';
                                 'ampcode' => $data['ampcode']
                             ];
 
-                            return Html::a($data['ampname'], $params);
+                            if($tb_type<2){
+
+                                return Html::a($data['ampname'], $params);
+                            }else{
+                                return $data['ampname'];
+                            }
                         }
                             ],
                             [
