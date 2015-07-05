@@ -53,7 +53,9 @@ $this->params['breadcrumbs'][] = 'รายการตัวชี้วัด�
                             'kpi_id' => $data['id'],
                             'rep_year' => $rep_year
                         ];
-
+                        if($data['id']==="m00300"){
+                            return Html::a($data['topic'], ['student/type3']);
+                        }
                         return Html::a($data['topic'], $params);
                     }],
                         
