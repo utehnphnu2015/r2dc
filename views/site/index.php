@@ -34,6 +34,16 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
 
     <!-- fix for small devices only -->
     <div class="clearfix visible-sm-block"></div>
+    
+     <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url4?>'">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">CMI</span>
+                <span class="info-box-number">47</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
 
     <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url3?>'">
         <div class="info-box">
@@ -44,15 +54,7 @@ $this->registerJsFile(Yii::$app->request->baseUrl . '/js/dashboard2.js', [
             </div><!-- /.info-box-content -->
         </div><!-- /.info-box -->
     </div><!-- /.col -->
-    <div class="col-md-3 col-sm-6 col-xs-12" style="cursor: pointer" onclick="window.location='<?=$url4?>'">
-        <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-            <div class="info-box-content">
-                <span class="info-box-text">CMI</span>
-                <span class="info-box-number">47</span>
-            </div><!-- /.info-box-content -->
-        </div><!-- /.info-box -->
-    </div><!-- /.col -->
+   
 </div><!-- /.row -->
 
 <div class="row">
