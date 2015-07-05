@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>  function ($model){
                     $provcode=$model->provcode;
                     $prov=Cchangwat::find()->where(['provcode'=>$provcode])->one();
-                    return $prov->provname;
+                    return $provcode."-".$prov->provname;
                 }
                
             ],

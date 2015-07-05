@@ -57,7 +57,7 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                 'value'=>  function ($model){
                     $provcode=$model->provcode;
                     $prov=Cchangwat::find()->where(['provcode'=>$provcode])->one();
-                    return $prov->provname;
+                    return $provcode."-".$prov->provname;
                 }
             ],
             [
@@ -67,7 +67,7 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                     $provcode=$model->provcode;
                     $ampcode = $model->ampcode;
                     $amp=  Campur::find()->where(['provcode'=>$provcode,'ampcode'=>$ampcode])->one();
-                    return $amp->ampname;
+                    return $ampcode."-".$amp->ampname;
                 }
             ],
             [
