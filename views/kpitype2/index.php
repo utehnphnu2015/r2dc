@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\TopicAll;
+use app\models\Cchangwat;
+use app\models\Campur;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -37,15 +39,29 @@ $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
             ],
             [
                 'attribute' => 'rep_year',
-                'label' => 'ปีงบประมาณ'
+                'label' => 'ปีงบประมาณ',
+                'value'=>  function ($model){
+                    return $model->rep_year+543;
+                }
             ],
             [
                 'attribute' => 'provcode',
-                'label' => 'จังหวัด'
+                'label' => 'จังหวัด',
+                'value'=>  function ($model){
+                    $provcode=$model->provcode;
+                    $prov=Cchangwat::find()->where(['provcode'=>$provcode])->one();
+                    return $prov->provname;
+                }
             ],
             [
                 'attribute' => 'ampcode',
-                'label' => 'อำเภอ'
+                'label' => 'อำเภอ',
+                'value'=>  function ($model){
+                    $provcode=$model->provcode;
+                    $ampcode = $model->ampcode;
+                    $amp=  Campur::find()->where(['provcode'=>$provcode,'ampcode'=>$ampcode])->one();
+                    return $amp->ampname;
+                }
             ],
             [
                 'attribute' => 'target',

@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\TopicAll;
+use app\models\Cchangwat;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -12,7 +13,17 @@ $this->title = "KPI ระดับจังหวัด";
 $this->params['breadcrumbs'][] = $this->title;
  $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
 ?>
+
+
 <div class="kpi-type3-index">
+    
+    <?php
+//test zone
+
+ //$prov=Cchangwat::find()->where(['provcode'=>67])->one();
+ //echo $prov->provname;
+
+?>
 
       <h4><?= Html::encode("ตัวชี้วัด : " . $kpi_id . "-" . $topic['topic']) ?></h4>
       <?php
@@ -36,11 +47,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'rep_year',
-                'label' => 'ปีงบประมาณ'
+                'label' => 'ปีงบประมาณ',
+                'value'=>  function ($model){
+                    return $model->rep_year+543;
+                }
             ],
             [
                 'attribute' => 'provcode',
-                'label' => 'จังหวัด'
+                'label' => 'จังหวัด',
+                'value'=>  function ($model){
+                    $provcode=$model->provcode;
+                    $prov=Cchangwat::find()->where(['provcode'=>$provcode])->one();
+                    return $prov->provname;
+                }
+               
             ],
             [
                 'attribute' => 'target',
