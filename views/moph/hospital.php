@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = 'รายสถานบริการ';
                 <?php
                 $topic = TopicAll::find()->where(['id' => $kpi_id])->asArray()->one();
                 echo $kpi_id;
+                 $tb_type= $topic['table_type'];
                 ?>
             </span>
         </h3>
