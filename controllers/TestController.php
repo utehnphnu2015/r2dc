@@ -13,7 +13,7 @@ class TestController extends \yii\web\Controller {
     
     public function actionIndex() {
         $connection = Yii::$app->db;
-        $sql = "SELECT hoscode,provcode,distcode FROM chospital2 WHERE provcode='62'";
+        $sql = "SELECT hospcode,provcode,ampcode FROM chospital2 WHERE provcode='62'";
         $data = $connection->createCommand($sql)
                 ->queryAll();
 
@@ -68,6 +68,9 @@ SELECT 'dd' AS t1,'77' AS s1";
             'dataProvider'=>$dataProvider
         ]);
                 
+    }
+    public function actionTest3(){
+        return $this->render('test3');
     }
 
 }

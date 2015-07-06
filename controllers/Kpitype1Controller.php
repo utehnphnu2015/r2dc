@@ -78,6 +78,9 @@ class Kpitype1Controller extends Controller {
     public function actionCreate($rep_year = null, $kpi_id = null,$feq=null) {
         
          $request = Yii::$app->request;
+         
+             //return $this->render('create');
+         
         if($request->isPost){
             
             $data = $request->post('KpiType1');
@@ -99,7 +102,16 @@ class Kpitype1Controller extends Controller {
             //return $this->redirect(['view', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year, 'hospcode' => $model->hospcode]);
             return $this->redirect(['index', 'kpi_id' => $model->kpi_id, 'rep_year' => $model->rep_year]);
         } else {
-            return $this->render('create', [
+           
+            if($request->isAjax)
+            return $this->renderAjax('create', [
+                        'model' => $model,
+                        'rep_year' => $rep_year,
+                        'kpi_id' => $kpi_id,
+                        'feq'=>$feq
+            ]);
+            else
+                return $this->render('create', [
                         'model' => $model,
                         'rep_year' => $rep_year,
                         'kpi_id' => $kpi_id,
