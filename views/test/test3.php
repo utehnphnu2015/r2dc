@@ -3,6 +3,8 @@
 use yii\bootstrap\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
+use yii\web\View;
+
 ?>
 
 <div class="box">
@@ -42,7 +44,6 @@ $script = <<<JS
         
 JS;
 
-use yii\web\View;
 
 $this->registerJs($script, View::POS_END);
 ?>
