@@ -16,13 +16,13 @@ use yii\bootstrap\Modal;
 
     </div>
     <div class="box-body">
-        <button  id="btn-open" class="btn btn-danger" value="<?= Url::to(['kpitype1/create','rep_year'=>'2015','kpi_id'=>'m00101','feq'=>'mon']) ?>">Test</button>
+        <button  id="btn-open" class="btn btn-danger" value="<?= Url::to(['kpitype1/create', 'rep_year' => '2015', 'kpi_id' => 'm00101', 'feq' => 'mon']) ?>">Test</button>
     </div>
 </div>
 
 <?php
 Modal::begin([
-    'id' => 'my-modal',    
+    'id' => 'my-modal',
     'size' => 'modal-lg'
 ]);
 ?>
@@ -32,5 +32,20 @@ Modal::end();
 ?>
 
 <?php
-$this->registerJsFile(Yii::$app->request->baseUrl . '/js/script.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+$script = <<<JS
+
+  $('#btn-open').click(function () {
+    $('#my-modal').modal('show')
+            .find('#modal-content')
+            .load($(this).attr('value'));
+});       
+        
+JS;
+
+use yii\web\View;
+$this->registerJs($script, View::POS_END);
+?>
+
+<?php
+//$this->registerJsFile(Yii::$app->request->baseUrl . '/js/script.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
