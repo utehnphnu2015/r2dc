@@ -34,15 +34,16 @@ Modal::end();
 <?php
 $script = <<<JS
 
-  $('#btn-open').click(function () {
-    $('#my-modal').modal('show')
+    $('#btn-open').click(function () {
+        $('#my-modal').modal('show')
             .find('#modal-content')
             .load($(this).attr('value'));
-});       
+    });       
         
 JS;
 
 use yii\web\View;
+
 $this->registerJs($script, View::POS_END);
 ?>
 
