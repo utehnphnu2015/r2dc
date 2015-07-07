@@ -16,7 +16,7 @@ use yii\bootstrap\Modal;
 
     </div>
     <div class="box-body">
-        <button  id="btn-open" class="btn btn-danger" value="<?= Url::to(['kpitype1/create','rep_year'=>'2015','kpi_id'=>'m00101']) ?>">Test</button>
+        <button  id="btn-open" class="btn btn-danger" value="<?= Url::to(['kpitype1/create','rep_year'=>'2015','kpi_id'=>'m00101','feq'=>'mon']) ?>">Test</button>
     </div>
 </div>
 
@@ -26,7 +26,7 @@ Modal::begin([
     'size' => 'modal-lg'
 ]);
 ?>
-<div id="modal-content"></div>
+<div id="modal-content">Loading..</div>
 <?php
 Modal::end();
 ?>
